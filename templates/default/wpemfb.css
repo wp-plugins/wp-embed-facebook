@@ -1,0 +1,40 @@
+.wpemfb-dummy {
+	padding-top: 80%;
+}
+.wpemfb-container{
+	margin-top:5px;
+    border: 1px solid #23487E;
+    border-radius: 2px;
+    box-shadow: 2px 2px 3px #1A3151;
+    display: inline-table;
+    height: auto;
+  margin-left: auto ;
+  margin-right: auto ;    
+}
+.wpemfb-pagebk{
+	background-size: 100%;
+}
+.wpemfb-info a {
+    color: #23487E;
+    text-decoration: none !important;
+}
+.wpemfb-info a:hover {
+    color: #23487E;
+    text-decoration: underline !important;
+}
+.wpemfb-title{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.wpemfb-pic{
+	display: table-cell; 
+	vertical-align: middle; 
+	margin: 0px; 
+	padding: 5px; 
+	width: 10%;
+}
+.wpemfb-desc{
+	display: table-cell; 
+	vertical-align: middle;	
+}
+
