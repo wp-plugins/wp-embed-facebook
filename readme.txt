@@ -32,7 +32,7 @@ In Settings > Embed Facebook.
 * Show like buttons on embedded Facebook pages and photos
 
 = How to use it =
-Put on a single and separate line the Facebook link.
+Put on a single and separate line the Facebook URL.
 
 **[Demo](http://saliuitl.org/en/wp-embed-facebook)**
 
