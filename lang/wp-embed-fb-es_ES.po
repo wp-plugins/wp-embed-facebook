@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-embed-fb\n"
-"POT-Creation-Date: 2014-02-26 18:53-0600\n"
-"PO-Revision-Date: 2014-02-26 19:06-0600\n"
+"POT-Creation-Date: 2014-02-28 20:03-0600\n"
+"PO-Revision-Date: 2014-02-28 20:03-0600\n"
 "Last-Translator: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
 "Language-Team: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +14,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"Language: es_ES\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../lib/admin.php:67
@@ -84,44 +84,39 @@ msgstr "Multiples app's en multisite"
 msgid "Comming Soon"
 msgstr "Pronto muy pronto"
 
-#: ../lib/core.php:84
-msgid "Something is wrong with this link"
-msgstr "Algo le pasa a este link"
+#: ../lib/core.php:89
+msgid "This facebook link is not public"
+msgstr "Este link de Facebook no es público"
 
-#: ../lib/core.php:127
+#: ../lib/core.php:134
 msgid "Web Site"
 msgstr "Sitio Web"
 
-#: ../lib/core.php:132
+#: ../lib/core.php:139
 msgid "Museum/art gallery"
 msgstr "Museo / Galería de Arte"
 
-#: ../lib/core.php:133
+#: ../lib/core.php:140
 msgid "Local business"
 msgstr "Negocio Local"
 
-#: ../lib/core.php:134
+#: ../lib/core.php:141
 msgid "Concert venue"
 msgstr "Foro de Conciertos"
 
-#: ../lib/core.php:135
+#: ../lib/core.php:142
 msgid "Public places"
 msgstr "Lugar publico"
 
-#: ../templates/default/band.php:25 ../templates/default/com-page.php:16
-#: ../templates/default/other.php:25
+#: ../templates/default/band.php:29 ../templates/default/com-page.php:20
+#: ../templates/default/other.php:33
 #, php-format
 msgid "%d people like this."
 msgstr "a %d les gusta esto."
 
-#: ../templates/default/event.php:17
-msgid "d M Y"
-msgstr ""
-
-#: ../templates/default/event.php:17
-msgid "d M Y g:ia"
-msgstr ""
-
-#: ../templates/default/event.php:43
+#: ../templates/default/event.php:33
 msgid "Creator: "
 msgstr "Creador:"
+
+#~ msgid "Something is wrong with this link"
+#~ msgstr "Algo le pasa a este link"

@@ -59,7 +59,6 @@ class WP_Embed_FB {
 		return $the_content;		
 	}
 	static function fb_embed($match){ //TODO: photos!
-		$wp_emb_fbsdk = self::$fbsdk;
 		$vars = array();
 		parse_str(parse_url($match[2], PHP_URL_QUERY), $vars);
 		if(isset($vars['fbid'])){ //for photos deprecated by fb 
@@ -73,7 +72,13 @@ class WP_Embed_FB {
 			else 
 				$fb_id = $last;
 		}
+		//do_action('') TODO: extend
 		//echo $fb_id.'<br>';
+			$res = self::fb_api_get($fb_id);
+		return $res;		
+	}
+	static function fb_api_get($fb_id){
+		$wp_emb_fbsdk = self::$fbsdk;
 		try {
 			$fb_data = $wp_emb_fbsdk->api('/'.$fb_id);
 			//$res = '<pre>'.print_r($fb_data,true).'</pre>'; //to inspect what elements are queried by default
@@ -81,8 +86,8 @@ class WP_Embed_FB {
 		} catch(FacebookApiException $e) {
 			$res = '<p><a href="http://wwww.facebook.com/'.$match[2].'" target="_blank" rel="nofollow">http://wwww.facebook.com/'.$match[2].'</a>';
 			if(is_super_admin()){
-				$res .= '<span style="color: red">'.__('Something is wrong with this link', 'wp-embed-fb').'</span></p>';
-				$res .= print_r($e->getResult(),true); //see the problem here
+				$res .= '<span style="color: red">'.__('This facebook link is not public', 'wp-embed-fb').'</span></p>';
+				//$res .= print_r($e->getResult(),true); //see the problem here
 			}
 				 
 		}
