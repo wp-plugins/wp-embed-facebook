@@ -23,7 +23,7 @@ This plugin embeds public the content of a Facebook page directly into a wordpre
 * Public Profiles
 
 = Requirements =
-* Facebook App id and secret
+* Facebook App id and Secret
 
 = Options = 
 In Settings > Embed Facebook.
