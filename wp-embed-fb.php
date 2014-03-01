@@ -8,7 +8,7 @@ Plugin Name: WP Embed Facebook
 Plugin URI: http://www.saliuitl.org/wp-embed-facebook/
 Description: This plugin transforms facebook links into graphic content. 
 Author: Miguel Sirvent
-Version: 1.1
+Version: 1.1.1
 Author URI: http://www.facebook.com/poxtron
 */
 

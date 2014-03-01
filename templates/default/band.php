@@ -1,3 +1,9 @@
+<?php
+/*
+ * You can create your own template by placing a copy of this file on yourtheme/plugins/wp-embed-fb/
+ * to access all fb data print_r($fb_data)
+ */
+?>
 <div class="wpemfb-container" style="min-width:<?php echo $height ?>px">
 	<div class="wpemfb-pagebk" 
 					style="	height:<?php echo $height ?>px; 
