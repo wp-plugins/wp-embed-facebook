@@ -59,7 +59,6 @@ class WP_Embed_FB {
 		return $the_content;		
 	}
 	static function fb_embed($match){ //TODO: photos!
-		$wp_emb_fbsdk = self::$fbsdk;
 		$vars = array();
 		parse_str(parse_url($match[2], PHP_URL_QUERY), $vars);
 		if(isset($vars['fbid'])){ //for photos deprecated by fb 
@@ -73,7 +72,13 @@ class WP_Embed_FB {
 			else 
 				$fb_id = $last;
 		}
+		//do_action('') TODO: extend
 		//echo $fb_id.'<br>';
+			$res = self::fb_api_get($fb_id);
+		return $res;		
+	}
+	static function fb_api_get($fb_id){
+		$wp_emb_fbsdk = self::$fbsdk;
 		try {
 			$fb_data = $wp_emb_fbsdk->api('/'.$fb_id);
 			//$res = '<pre>'.print_r($fb_data,true).'</pre>'; //to inspect what elements are queried by default
@@ -85,8 +90,7 @@ class WP_Embed_FB {
 				$res .= print_r($e->getResult(),true); //see the problem here
 			}
 				 
-		}
-		return $res;		
+		}		
 	}
 	static function print_fb_data($fb_data){
 		$width = get_option('wpemfb_max_width');
