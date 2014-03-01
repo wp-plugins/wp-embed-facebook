@@ -39,7 +39,7 @@ The information that is shown on your post if from facebook directly, no images 
 
 == Changelog ==
 
-= 1.5 =
+= 1.1.1 =
 * Corrected links on events.
 
 = 1.1 =
