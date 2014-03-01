@@ -39,6 +39,7 @@ class WP_Embed_FB {
 						'wpemfb_app_secret'		=> '0',
 						'wpemfb_proportions' 	=> 0.36867,
 						'wpemfb_height'			=> '221.202',
+						'wpemfb_show_like'		=> 'true',
 						);
 	}
 	static function wp_enqueue_scripts(){
@@ -56,10 +57,31 @@ class WP_Embed_FB {
 			    }			
 		}
 
-		return $the_content;		
+		return self::fb_scripts().$the_content;		
+	}
+	static function fb_scripts(){
+		ob_start();
+		?>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+		<?php
+		return ob_get_clean();		
+	}
+	static function like_btn($fb_id,$likes=null){
+		$opt = get_option('wpemfb_show_like');
+		if($opt === 'true') :
+			ob_start();
+			?>
+				<div class="fb-like" data-href="https://facebook.com/<?php echo $fb_id ?>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>		
+			<?php
+			ob_end_flush();
+			return; 
+		else :
+			printf( __( '%d people like this.', 'wp-embed-fb' ), $likes );
+			return;
+		endif;			
 	}
 	static function fb_embed($match){ //TODO: photos!
-		$wp_emb_fbsdk = self::$fbsdk;
 		$vars = array();
 		parse_str(parse_url($match[2], PHP_URL_QUERY), $vars);
 		if(isset($vars['fbid'])){ //for photos deprecated by fb 
@@ -67,22 +89,47 @@ class WP_Embed_FB {
 		} else {
 			$url = explode('?', $match[2]);
 			$clean = explode('/', $url[0]);
-			$last = end($clean);
-			if( empty( $last ) ) 
-				$fb_id = $clean[count($clean)-2];//penultimo valor
-			else 
-				$fb_id = $last;
+			$end = end($clean);
+			if(empty($end)){
+				array_pop($clean);
+			} 
+			$fb_id = end($clean);
+			if( $key = array_search('posts',$clean) !== false ){
+				$user = $clean[$key -1];
+				$post = $clean[$key +1];
+				$fb_data = array('user' => $user ,'is_post' => $post);
+				return self::print_fb_data($fb_data);				
+			} else {
+			$wp_emb_fbsdk = self::$fbsdk;
+			try {
+				$fb_data = $wp_emb_fbsdk->api('/'.$fb_id);
+				//$res = '<pre>'.print_r($fb_data,true).'</pre>'; //to inspect what elements are queried by default
+				$res = self::print_fb_data($fb_data);
+			} catch(FacebookApiException $e) {
+				$res = '<p><a href="http://wwww.facebook.com/'.$match[2].'" target="_blank" rel="nofollow">http://wwww.facebook.com/'.$match[2].'</a><br>';
+				if(is_super_admin()){
+					$res .= '<span style="color: red">'.__('This facebook link is not public', 'wp-embed-fb').'</span></p>';
+					$res .= print_r($e->getResult(),true); //see the problem here
+				}
+					 
+			}
+			return $res;	
+			}			
 		}
-		//echo $fb_id.'<br>';
+		return self::fb_api_get($fb_id, $match[2]);
+	}
+	static function fb_api_get($fb_id, $url){
+		$wp_emb_fbsdk = self::$fbsdk;
 		try {
 			$fb_data = $wp_emb_fbsdk->api('/'.$fb_id);
 			//$res = '<pre>'.print_r($fb_data,true).'</pre>'; //to inspect what elements are queried by default
 			$res = self::print_fb_data($fb_data);
 		} catch(FacebookApiException $e) {
-			$res = '<p><a href="http://wwww.facebook.com/'.$match[2].'" target="_blank" rel="nofollow">http://wwww.facebook.com/'.$match[2].'</a>';
+			$res = '<p><a href="http://wwww.facebook.com/'.$url.'" target="_blank" rel="nofollow">http://wwww.facebook.com/'.$url.'</a>';
 			if(is_super_admin()){
-				$res .= '<span style="color: red">'.__('Something is wrong with this link', 'wp-embed-fb').'</span></p>';
+				$res .= '<span style="color: red">'.__('This facebook link is not public', 'wp-embed-fb').'</span></p>';
 				$res .= print_r($e->getResult(),true); //see the problem here
+				$res .= 'fb_id'.$fb_id;
 			}
 				 
 		}
@@ -108,7 +155,11 @@ class WP_Embed_FB {
 					break;
 				}
 			}
-		} else { //is profile
+		} elseif(isset($fb_data['is_post'])) {
+			$template = self::locate_template('posts');
+		} elseif(isset($fb_data['width'])) {
+			$template = self::locate_template('photo');
+		}else { //is profile
 			$template = self::locate_template('profile');
 		}
 		ob_start();
@@ -138,9 +189,10 @@ class WP_Embed_FB {
 						);
 		//$catsflip = array_flip($fbcats); TODO: Translate categories
 		if($id = array_search($category, $fbcats) !== false)
-			return $fbcats[$id];
+			echo $fbcats[$id];
 		else
-			return (string)$category;
+			echo (string)$category;
+		return;
 		//$replace = array('Museo - Galería de Arte','Negocio Local','Sala de Conciertos','Espacio público');
 	}
 }

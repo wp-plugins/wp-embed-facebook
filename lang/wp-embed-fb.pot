@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-embed-fb\n"
-"POT-Creation-Date: 2014-02-26 18:53-0600\n"
-"PO-Revision-Date: 2014-02-26 18:53-0600\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2014-02-28 20:05-0600\n"
+"PO-Revision-Date: 2014-02-28 20:05-0600\n"
+"Last-Translator: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
 "Language-Team: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -84,44 +84,36 @@ msgstr ""
 msgid "Comming Soon"
 msgstr ""
 
-#: ../lib/core.php:84
-msgid "Something is wrong with this link"
-msgstr ""
-
-#: ../lib/core.php:127
-msgid "Web Site"
-msgstr ""
-
-#: ../lib/core.php:132
-msgid "Museum/art gallery"
-msgstr ""
-
-#: ../lib/core.php:133
-msgid "Local business"
+#: ../lib/core.php:89
+msgid "This facebook link is not public"
 msgstr ""
 
 #: ../lib/core.php:134
+msgid "Web Site"
+msgstr ""
+
+#: ../lib/core.php:139
+msgid "Museum/art gallery"
+msgstr ""
+
+#: ../lib/core.php:140
+msgid "Local business"
+msgstr ""
+
+#: ../lib/core.php:141
 msgid "Concert venue"
 msgstr ""
 
-#: ../lib/core.php:135
+#: ../lib/core.php:142
 msgid "Public places"
 msgstr ""
 
-#: ../templates/default/band.php:25 ../templates/default/com-page.php:16
-#: ../templates/default/other.php:25
+#: ../templates/default/band.php:29 ../templates/default/com-page.php:20
+#: ../templates/default/other.php:33
 #, php-format
 msgid "%d people like this."
 msgstr ""
 
-#: ../templates/default/event.php:17
-msgid "d M Y"
-msgstr ""
-
-#: ../templates/default/event.php:17
-msgid "d M Y g:ia"
-msgstr ""
-
-#: ../templates/default/event.php:43
+#: ../templates/default/event.php:33
 msgid "Creator: "
 msgstr ""

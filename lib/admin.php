@@ -30,6 +30,19 @@ class EmbFbAdmin{
 				update_site_option('wpemfb_height', $prop);
 				}				
 			}
+			if(isset($_POST['wpemfb_show_like'])){
+				if ( !is_multisite() ) 
+					update_option('wpemfb_show_like', 'true');
+				else  // TODO: multiple fb apps for each site
+					update_site_option('wpemfb_show_like', 'true');
+			}else{
+				if ( !is_multisite() ) {
+					update_option('wpemfb_show_like', 'false');
+				} 
+				else { // TODO: multiple fb apps for each site
+					update_site_option('wpemfb_show_like', 'false');
+				}				
+			}			
 			if(isset($_POST['wpemfb_enqueue_style'])){
 				if ( !is_multisite() ) 
 					update_option('wpemfb_enqueue_style', 'true');
@@ -51,8 +64,8 @@ class EmbFbAdmin{
 		if(isset($_POST['submit'])){
 			self::savedata();
 		}
-		$style = get_option('wpemfb_enqueue_style');
-		$checked = ($style === 'true') ? 'checked' : '' ;		
+		$checked = (get_option('wpemfb_enqueue_style') === 'true') ? 'checked' : '' ;
+		$checked2 = (get_option('wpemfb_show_like') === 'true') ? 'checked' : '' ;
 		?>
 		<div class="wrap">
 			<h2>WP Embed Facebook</h2>
@@ -98,6 +111,12 @@ class EmbFbAdmin{
 												<input type="checkbox" name="wpemfb_enqueue_style"  <?php echo $checked ?> /><br>
 											</td>
 										</tr>
+										<tr valign="middle">
+											<th><?php _e('Add like button to pages','wp-embed-fb') ?></th>
+											<td>
+												<input type="checkbox" name="wpemfb_show_like"  <?php echo $checked2 ?> /><br>
+											</td>
+										</tr>										
 										<tr>
 											<td>
 												<?php //echo wp_nonce_field('wpebfb','nonce'); ?>
