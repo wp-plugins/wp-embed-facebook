@@ -1,33 +1,33 @@
 === WP Embed Facebook ===
 Contributors: poxtron
 Donate link: http://www.saliuitl.org/en/wp-embed-facebook
-Tags: facebook, embed, open graph, fbsdk
+Tags: facebook, embed, open graph, fbsdk, Facebook events,
 Requires at least: 3.0.1
 Tested up to: 3.8.1
 Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed a Facebook page, post, event, photo or profile to a wp post or page.
+Embed a Facebook page, post, event, photo or profile to any WP post or page.
 
 == Description ==
 
-This plugin embeds public the content of a facebook page directly into a wordpress post.
+This plugin embeds public the content of a Facebook page directly into a wordpress post.
 
 =Supported Embeds=
-*Public Posts
-*Public Photos
-*Public Events
-*Fan pages
-*Community pages
-*Public Profiles
+* Public Posts
+* Public Photos
+* Public Events
+* Fan pages
+* Community pages
+* Public Profiles
 
 =Requirements=
-*Facebook App id and secret
+* Facebook App id and secret
 
 =Options= (in Settings > Embed Facebook)
-*Change embed width
-*Show like buttons on embedded Facebook pages and photos
+* Change embed width
+* Show like buttons on embedded Facebook pages and photos
 
 =How tu use it=
 Put on a single and separate line the Facebook link.
