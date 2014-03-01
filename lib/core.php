@@ -89,7 +89,7 @@ class WP_Embed_FB {
 		} else {
 			$url = explode('?', $match[2]);
 			$clean = explode('/', $url[0]);
-			$end = end($clean);
+			$end = end($clean);	
 			if(empty($end)){
 				array_pop($clean);
 			} 
@@ -167,7 +167,7 @@ class WP_Embed_FB {
 		return ob_get_clean();
 	}
 	static function locate_template($template_name){
-		$located = locate_template(array('plugins/wp-embed-fb/'.$template_name.'.php'));
+		$located = locate_template(array('plugins/wp-embed-facebook/'.$template_name.'.php'));
 		if( empty($located) ){
 			$located =  plugin_dir_path( __FILE__ ).'../templates/default/'.$template_name.'.php';
 		}
