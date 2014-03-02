@@ -12,7 +12,7 @@ Embed a Facebook page, post, event, photo or profile to any WP post or page.
 
 == Description ==
 
-This plugin embeds public the content of a Facebook page directly into a wordpress post.
+This plugin embeds public content of a Facebook page directly into a wordpress post.
 
 = Supported Embeds =
 * Public Posts
