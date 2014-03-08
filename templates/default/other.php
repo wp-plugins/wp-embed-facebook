@@ -1,3 +1,9 @@
+<?php
+/*
+ * You can create your own template by placing a copy of this file on yourtheme/plugins/wp-embed-fb/
+ * to access all fb data print_r($fb_data)
+ */
+?>
 <div class="wpemfb-container" 
 						style="	width:<?php echo $width ?>px;
 							    margin-left: auto;
@@ -23,8 +29,8 @@
 					<?php echo $fb_data['name'] ?>
 				</a>
 			</h4>
-			<?php echo WP_Embed_FB::fb_categories($fb_data['category']) ?><br>
-			<?php printf( __( '%d people like this.', 'wp-embed-fb' ), $fb_data['likes'] ); ?><br>
+			<?php WP_Embed_FB::fb_categories($fb_data['category']) ?><br>
+			<?php WP_Embed_FB::like_btn($fb_data['id'],$fb_data['likes']) ?><br>
 			<?php echo isset($fb_data["website"]) ? WP_Embed_FB::getwebsite($fb_data["website"]) : ""; ?>					
 		</div>
 	</div>
