@@ -1,53 +1,72 @@
 === WP Embed Facebook ===
 Contributors: poxtron
-Donate link: http://www.saliuitl.org/en/wp-embed-facebook
-Tags: facebook, embed, open graph, fbsdk
+Donate link: http://www.saliuitl.org/en/wp-embed-facebook/donate
+Tags: facebook, embed, opengraph, fbsdk, facebook events, facebook pages, facebook profiles,
 Requires at least: 3.0.1
 Tested up to: 3.8.1
-Stable tag: 1.2
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed a facebook page, post, event, photo or profile to a post.
+Embed a Facebook page, post, event, photo or profile to any Wordpress post or page.
 
 == Description ==
 
-This plugin embeds public the content of a facebook page directly into a wordpress post.
+With this plugin you can embed any public facebook page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will try to fetch data associated with that url and display it on publishing, if the data is not public, like “invite only” events or private profiles, it'll return a link.
 
-**Embeds**
-* posts
-* photos
-* events
-* fan pages
-* community pages
-* profiles
+= Supported Embeds =
+* Events
+* Fan pages
+* Community pages
+* Profiles
+* Posts
+* Photos
 
-**Options** (Settings > Embed Facebook)
+= Requirements =
+* Facebook App id and Secret
+
+= How to use it =
+Put on a single and separate line the Facebook URL.
+
+= Options = 
+In Settings > Embed Facebook.
+
 * Change embed width
-* Show like buttons on embedded Facebook pages
+* Show like buttons on embedded Facebook pages and photos
+* Remove plugin styles
+* Add fb-root
 
-Customise the look copying the wp-embed-facebook/templates/default content to yourtheme/plugins/wp-embed-fb
+**[Demo](http://saliuitl.org/en/wp-embed-facebook)**
 
-To use it first you need to create a facebook app and configure for your domain.  When you get your App id and App secret copy them to the ¨Embed Facebook¨ page under the Setting section inside wp-admin
+* The information that shown on your post, is from facebook directly, no images or data are stored on your server. 
 
-Put on a single line an url for a facebook page, profile or event, on any of your posts or pages.
-
-The information that is shown on your post if from facebook directly, no images or data are stored on your serer. You can not embed data that is not public like ¨invite only¨ events, or private profiles.
-
-[Demo](http://saliuitl.org/en/wp-embed-facebook)
-
-**On the next version**
+= On the next version =
 * Templates
 
 == Installation ==
 
 1. Download wp embed facebook plugin from [Wordpress](http://wordpress.org/plugins/wp-embed-facebook)
-1. Create a [facebook app](https://developers.facebook.com/apps) and configure for your domain.
-1. Copy the app id and app secret to the ¨Embed Facebook¨ page under the Setting section.
-1. Put a single
-1. Enjoy !
+1. Extract to /wp-content/plugins/ folder, and activate the plugin in /wp-admin/.
+1. Create a [facebook app](https://developers.facebook.com/apps).
+1. Copy the app id and app secret to the “Embed Facebook” page under the Settings section.
+1. Copy on a single line any facebook url.
+1. Enjoy and tell someone !
+
+== Customisation ==
+ 
+1. Copy the contents of `wp-embed-facebook/templates/default/` to `your-theme/plugins/wp-embed-facebook` 
+1. Untick "Enqueue Styles" option to use your own css. 
+1. Access all facebook data retrieved from the url using `print_r($fb_data)` on any template file.
+1. Click the taco ! ;)
 
 == Changelog ==
+
+= 1.2.2 =
+* Bugs and documentation
+
+= 1.2.1 =
+* Updated Instructions
+* Change theme template directory
 
 = 1.2 =
 * Embed posts
