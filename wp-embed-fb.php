@@ -1,14 +1,14 @@
 <?php
 /**
  * @package WP_Embed_Facebook
- * @version 1.2.2
+ * @version 1.2.3
  */
 /*
 Plugin Name: WP Embed Facebook
 Plugin URI: http://www.saliuitl.org/en/wp-embed-facebook/
 Description: Embed a Facebook page, post, event, photo or profile to any Wordpress post or page. Copy any fb url to a single line on your post.
 Author: Miguel Sirvent
-Version: 1.2.2
+Version: 1.2.3
 Author URI: http://www.saliuitl.org/
 */
 
