@@ -2,9 +2,9 @@
 Contributors: poxtron
 Donate link: http://www.saliuitl.org/en/wp-embed-facebook/donate
 Tags: facebook, embed, opengraph, fbsdk, facebook events, facebook pages, facebook profiles,
-Requires at least: 3.0.1
+Requires at least: 3.8.1
 Tested up to: 3.8.1
-Stable tag: 1.2.3
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,7 +41,7 @@ In Settings > Embed Facebook.
 * The information that shown on your post, is from facebook directly, no images or data are stored on your server. 
 
 = On the next version =
-* Templates
+* Embed Personal Data
 
 == Installation ==
 
@@ -60,6 +60,11 @@ In Settings > Embed Facebook.
 1. Click the taco ! ;)
 
 == Changelog ==
+
+= 1.3 =
+* Shortcode [facebook=url ] width is optional
+* Themes
+* Multilingual Like Buttons
 
 = 1.2.2 =
 * Bugs and documentation
