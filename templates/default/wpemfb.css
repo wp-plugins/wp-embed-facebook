@@ -1,0 +1,40 @@
+.wpemfb-container{
+    border: 1px solid #DEDEDE;
+    border-radius: 2px;
+    display: inline-table;
+    font-family: Helvetica;
+    height: auto;
+    margin: 5px auto;
+    padding: 10px;    
+}
+.wpemfb-pagebk{
+	background-size: 100%;
+	cursor: pointer;
+}
+.wpemfb-info a {
+	font-family: Helvetica;
+    color: #23487E;
+    text-decoration: none !important;
+}
+.wpemfb-info a:hover {
+    color: #23487E;
+    text-decoration: underline !important;
+}
+.wpemfb-title{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.wpemfb-pic{
+	display: table-cell; 
+	vertical-align: middle; 
+	margin: 0px; 
+	padding: 5px; 
+	width: 10%;
+}
+.wpemfb-desc{
+	display: table-cell; 
+	vertical-align: middle;	
+}
+.fb-btns {
+    float: right;
+}
