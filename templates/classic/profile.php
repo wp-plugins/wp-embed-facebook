@@ -3,10 +3,8 @@
  * You can create your own template by placing a copy of this file on yourtheme/plugins/wp-embed-fb/
  * to access all fb data print_r($fb_data)
  */
- $width = $width - 20;
- $height = $width * $prop;  
 ?>
-<div class="wpemfb-container">
+<div class="wpemfb-container" style="min-width:<?php echo $width ?>px">
 	<div class="wpemfb-info">
 		<div class="wpemfb-pic">
 			<a href="http://facebook.com/<?php echo $fb_data['id'] ?>" target="_blank" rel="nofollow">

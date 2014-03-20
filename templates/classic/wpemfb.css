@@ -1,18 +1,17 @@
 .wpemfb-container{
-    border: 1px solid #DEDEDE;
+	margin-top:5px;
+    border: 1px solid #23487E;
     border-radius: 2px;
+    box-shadow: 2px 2px 3px #1A3151;
     display: inline-table;
-    font-family: Helvetica;
     height: auto;
-    margin: 5px auto;
-    padding: 10px;    
+  margin-left: auto ;
+  margin-right: auto ;    
 }
 .wpemfb-pagebk{
 	background-size: 100%;
-	cursor: pointer;
 }
 .wpemfb-info a {
-	font-family: Helvetica;
     color: #23487E;
     text-decoration: none !important;
 }
@@ -35,6 +34,4 @@
 	display: table-cell; 
 	vertical-align: middle;	
 }
-.fb-btns {
-    float: right;
-}
+

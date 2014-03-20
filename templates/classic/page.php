@@ -29,8 +29,14 @@
 					<?php echo $fb_data['name'] ?>
 				</a>
 			</h4>
-			<?php echo WP_Embed_FB::fb_categories($fb_data['category']) ?><br>
-			<?php printf( __( '%d people like this.', 'wp-embed-fb' ), $fb_data['likes'] ); ?><br>
+			<?php
+				if($fb_data['category'] == 'Musician/band'){
+					echo isset($fb_data['genre']) ? $fb_data['genre'].'<br>' : '';
+				} else {
+					_e($fb_data['category'],'wp-embed-facebook');
+				}
+			?><br>
+			<?php WP_Embed_FB::like_btn($fb_data['id'],$fb_data['likes']) ?><br>
 			<?php echo isset($fb_data["website"]) ? WP_Embed_FB::getwebsite($fb_data["website"]) : ""; ?>					
 		</div>
 	</div>

@@ -1,38 +1,37 @@
 <?php
 /**
- * @package WP_Embed_FB
- * @version 1.0
+ * @package WP_Embed_Facebook
+ * @version 1.4
  */
 /*
 Plugin Name: WP Embed Facebook
-Plugin URI: http://www.saliuitl.org/wp-embed-facebook/
-Description: This plugin transforms facebook links into graphic content. 
+Plugin URI: http://www.wpembedfb.com
+Description: Embed a Facebook page, post, event, photo, album or profile to any Wordpress post or page. Copy any fb url to a single line on your post, or use shortcode [facebook='url' width='' ]
 Author: Miguel Sirvent
-Version: 1.1
-Author URI: http://www.facebook.com/poxtron
+Version: 1.4
+Author URI: http://profiles.wordpress.org/poxtron/
 */
 
-add_action('init','wpemfblang');
-function wpemfblang(){
-	load_plugin_textdomain( 'wp-embed-fb', '', basename( dirname( __FILE__ ) ) . '/lang' );
-}
+/*
+ * Global definitions and core include.
+ */
+define('WPEMFBDIR',dirname(__FILE__));
+require_once WPEMFBDIR.'/lib/core.php';
 
-define('WPEMFBLIB',dirname( __FILE__ ) . '/lib/');
-
-require_once WPEMFBLIB.'core.php';
-
-register_activation_hook( __FILE__, array('WP_Embed_FB', 'install') );
-//register_uninstall_hook( __FILE__, array('WP_Embed_FB', 'uninstall') );
-register_deactivation_hook( __FILE__, array('WP_Embed_FB', 'uninstall'));
-add_action('init',array('FaceInit','init'));
-
-add_action( 'wp_enqueue_scripts', array('WP_Embed_FB', 'wp_enqueue_scripts') );
-
-add_filter('the_content', array('WP_Embed_FB','the_content'),10,1);
-
+/*
+ * All actions, filters and hooks.
+ */
+register_activation_hook(__FILE__, array('WP_Embed_FB', 'install') );
+register_uninstall_hook(__FILE__, array('WP_Embed_FB', 'uninstall') );
+add_action('init',array('WP_Embed_FB','init'));
+add_action('wp_enqueue_scripts', array('WP_Embed_FB', 'wp_enqueue_scripts') );
+add_filter('the_content', array('WP_Embed_FB','fb_scripts'),10,1);
+add_filter('the_content', array('WP_Embed_FB','the_content'),10,2);
+add_shortcode('facebook', array('WP_Embed_FB','shortcode') );
 if(is_admin()){
-	require_once WPEMFBLIB.'admin.php';
+	require_once WPEMFBDIR.'/lib/admin.php';
 	add_action('admin_menu', array('EmbFbAdmin','add_page'));
+	add_action('admin_init', array('EmbFbAdmin','admin_init'));
 }
 
 ?>
