@@ -8,7 +8,7 @@ Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed a Facebook page, post, event, photo or profile to any Wordpress post or page.
+Embed a Facebook page, post, video, event, photo or profile to any Wordpress post or page.
 
 == Description ==
 
