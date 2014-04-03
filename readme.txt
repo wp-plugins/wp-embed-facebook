@@ -1,7 +1,7 @@
 === WP Embed Facebook ===
 Contributors: poxtron
 Donate link: http://www.saliuitl.org/en/wp-embed-facebook/donate
-Tags: facebook, embed, opengraph, fbsdk, facebook events, facebook pages, facebook profiles,
+Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 3.8.1
 Stable tag: 1.5
@@ -12,17 +12,17 @@ Embed a Facebook video, page, event, album, photo, profile or post to any Wordpr
 
 == Description ==
 
-With this plugin you can embed any public facebook page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will try to fetch data associated with that url and display it on publishing, if the data is not public, like “invite only” events or private profiles, it'll return a link.
+With this plugin you can embed any public facebook video, page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will try to fetch data associated with that url and display it on publishing, if the data is not public, like “invite only” events or private profiles, it'll return a link.
 
 = Supported Embeds =
-* Videos
-* Albums
-* Events
-* Fotos
-* Fan pages
-* Community pages
-* Profiles
-* Posts
+* Facebook Videos
+* Facebook Albums
+* Facebook Events
+* Facebook Fotos
+* Facebook Fan pages
+* Facebook Community pages
+* Facebook Profiles
+* Facebook Publications
 
 = Requirements =
 * Facebook App id and Secret
