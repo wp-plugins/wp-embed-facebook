@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Embed Facebook v1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-04-02 08:53:31+0000\n"
+"Last-Translator: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
+"Language-Team: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: lib/admin.php:77
+#@ wp-embed-facebook
+msgid "Facebook application data"
+msgstr "Datos de la App de Facebook"
+
+#: lib/admin.php:92
+#@ wp-embed-facebook
+msgid "Theme to use"
+msgstr "Tema a usar"
+
+#: lib/admin.php:101
+#@ wp-embed-facebook
+msgid "Fb Cover Embed Width"
+msgstr "Ancho del incrustado"
+
+#: lib/admin.php:108
+#@ wp-embed-facebook
+msgid "Embed video as Post"
+msgstr "Incrustar video como publicación"
+
+#: lib/admin.php:114
+#@ wp-embed-facebook
+msgid "Embed photo as Post"
+msgstr "Incrustar foto como publicación"
+
+#: lib/admin.php:120
+#@ wp-embed-facebook
+msgid "Add like button to embedded pages"
+msgstr "Agregar boton ¨me gusta¨ a las paginas incrustadas"
+
+#: lib/admin.php:126
+#@ wp-embed-facebook
+msgid "Show follow button"
+msgstr "Mostrar el boton de seguir"
+
+#: lib/admin.php:134
+#@ wp-embed-facebook
+msgid "Advanced Options"
+msgstr "Opciones Avanzadas"
+
+#: lib/admin.php:138
+#@ wp-embed-facebook
+msgid "Enqueue Styles"
+msgstr "Incluir css"
+
+#: lib/admin.php:144
+#@ wp-embed-facebook
+msgid "Add fb-root and js on top of content"
+msgstr "Incluir el fb-root y js al inicio del contenido"
+
+#: lib/admin.php:144
+#@ wp-embed-facebook
+msgid "Some themes may not need this"
+msgstr "Algunos themes pueden no necesitar esto"
+
+#: lib/admin.php:152
+#@ wp-embed-facebook
+msgid "Save"
+msgstr "Guardar"
+
+#: lib/admin.php:161
+#@ wp-embed-facebook
+msgid "Customize"
+msgstr "Customizar"
+
+#: lib/admin.php:164
+#@ wp-embed-facebook
+msgid "Support"
+msgstr "Soporte"
+
+#: lib/admin.php:168
+#@ wp-embed-facebook
+msgid "Plugin Web Site"
+msgstr "Sitio Web del Plugin"
+
+#: lib/admin.php:176
+#@ wp-embed-facebook
+msgid "Donate!"
+msgstr "¡Dona!"
+
+#: lib/admin.php:177
+#@ wp-embed-facebook
+msgid "Help me keep this plugin up to date"
+msgstr "Ayúdame a mantener este plugin actualizado"
+
+#: lib/admin.php:178
+#@ wp-embed-facebook
+msgid "Click the taco !"
+msgstr "¡Click en el Taco!"
+
+#: lib/admin.php:187
+#@ wp-embed-facebook
+msgid "Searching for the Premium version ?"
+msgstr "¿ Buscas la versión premium ?"
+
+#: lib/admin.php:190
+#@ wp-embed-facebook
+msgid "Custom templates"
+msgstr "Templates nuevos"
+
+#: lib/admin.php:193
+#@ wp-embed-facebook
+msgid "Compatibility with all themes imaginable"
+msgstr "Compatibilidad con más themes"
+
+#: lib/admin.php:196
+#@ wp-embed-facebook
+msgid "Multiple fb app id's per each multisite site"
+msgstr "Multiples apps de fb para cada sitio en multisite"
+
+#: lib/admin.php:199
+#@ wp-embed-facebook
+msgid "Comming Soon"
+msgstr "Proximamente"
+
+#: lib/core.php:234
+#@ wp-embed-facebook
+msgid "Web Site"
+msgstr "Sitio Web"
+
+#: lib/core.php:242
+#@ default
+msgid "Museum/art gallery"
+msgstr ""
+
+#: lib/core.php:243
+#@ default
+msgid "Local business"
+msgstr ""
+
+#: lib/core.php:244
+#@ default
+msgid "Concert venue"
+msgstr ""
+
+#: lib/core.php:245
+#@ default
+msgid "Public places"
+msgstr ""
+
+#: lib/core.php:288
+#, php-format
+#@ wp-embed-facebook
+msgid "%d people like this."
+msgstr "%d les gusta esto"
+
+#: templates/classic/event.php:33 templates/default/event.php:36
+#@ wp-embed-facebook
+msgid "Creator: "
+msgstr "Creador: "
+
+#: templates/classic/page.php:36 templates/default/page.php:34
+#@ wp-embed-facebook
+msgid "category"
+msgstr "categoria"
+
