@@ -1,10 +1,10 @@
 === WP Embed Facebook ===
 Contributors: poxtron
-Donate link: http://www.saliuitl.org/en/wp-embed-facebook/donate
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J373TWCMJ5CEY&lc=MX&item_name=WP%20Embed%20Facebook&no_note=1&no_shipping=1&rm=1&return=http%3a%2f%2fwww%2ewpembedfb%2ecom%2fyou%2dare%2dawesome&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 3.9.1
-Stable tag: 1.5.3
+Tested up to: 3.9.2
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ Put on a single and separate line the Facebook URL.
 Or you can use a shortcode
 `[facebook=url width=200 raw=true]` 
 width and raw are optional, raw only works for videos and photos
+example
+Album
+`[facebook=https://www.facebook.com/zuck/media_set?set=a.941146602501.2418915.4&type=3]`
+Video
 
 = Options = 
 In Settings > Embed Facebook.
@@ -47,7 +51,8 @@ In Settings > Embed Facebook.
 * The information that shown on your post, is from facebook directly, no images or data are stored on your server. 
 
 = On the next version =
-* Better Responsiveness
+* Embed Post Raw 
+* Premium Version
 
 == Installation ==
 
@@ -67,6 +72,16 @@ In Settings > Embed Facebook.
 1. Click the taco ! ;)
 
 == Changelog ==
+
+= 1.6 =
+* Responsive Template
+* Posts on Page Embeds
+* Album Photo Count
+* Fixes on Admin Page
+* Remove of unnecesary code
+
+= 1.5.3 =
+* fixed Warning in admin
 
 = 1.5 =
 * Support for raw videos and photos
