@@ -73,7 +73,7 @@ In Settings > Embed Facebook.
 
 == Changelog ==
 
-=1.6.1=
+= 1.6.1 =
 * fix website url
 * fix embed post width
 
