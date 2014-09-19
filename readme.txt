@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J373T
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.0
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,24 +29,21 @@ With this plugin you can embed any public facebook video, page, post, profile, p
 
 = How to use it =
 Put on a single and separate line the Facebook URL.
-Or you can use a shortcode
-`[facebook=url width=200 raw=true]` 
+Or you can use a shortcode `[facebook=url width=200 raw=true]` 
 width and raw are optional, raw only works for videos and photos
-example
-Album
-`[facebook=https://www.facebook.com/zuck/media_set?set=a.941146602501.2418915.4&type=3]`
-Video
 
-= Options = 
-In Settings > Embed Facebook.
-* Change embed width
-* Show like buttons on embedded Facebook pages and photos
-* Show Follow Button
+= Options =
+* Settings -> Embed Facebook.
+* Show latest Posts of Fan Page
+* Number of photos shown on album embed
+* Embed width customization
+* Show like buttons on Fan Pages
+* Show Follow Button on profile embed
 * Remove plugin styles
 * Change Theme
 * Add fb-root
 
-**[Demo](http://www.saliuitl.org/en/wp-embed-facebook)**
+**[Demo](http://www.wpembedfb.com)**
 
 * The information that shown on your post, is from facebook directly, no images or data are stored on your server. 
 
@@ -72,6 +69,9 @@ In Settings > Embed Facebook.
 1. Click the taco ! ;)
 
 == Changelog ==
+
+= 1.6.2 =
+* minor bugs
 
 = 1.6.1 =
 * fix website url
