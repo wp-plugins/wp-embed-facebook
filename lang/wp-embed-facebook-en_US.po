@@ -1,0 +1,154 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Embed Facebook\n"
+"POT-Creation-Date: 2014-10-26 12:02-0600\n"
+"PO-Revision-Date: 2014-10-26 12:03-0600\n"
+"Last-Translator: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;_x;__\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../lib/admin.php:132
+msgid "Facebook application data"
+msgstr ""
+
+#: ../lib/admin.php:150
+msgid "General Options"
+msgstr ""
+
+#: ../lib/admin.php:155
+msgid "Template to use"
+msgstr ""
+
+#: ../lib/admin.php:164
+msgid "Embed Max-Width"
+msgstr ""
+
+#: ../lib/admin.php:170
+msgid "Number of Photos <br> on Embedded Albums"
+msgstr ""
+
+#: ../lib/admin.php:176
+msgid "Show follow button <br>on Embedded Profiles"
+msgstr ""
+
+#: ../lib/admin.php:184
+msgid "Embedded Fan Pages"
+msgstr ""
+
+#: ../lib/admin.php:189
+msgid "Show like button"
+msgstr ""
+
+#: ../lib/admin.php:195
+msgid "Show latest posts"
+msgstr ""
+
+#: ../lib/admin.php:201
+msgid "Number of posts"
+msgstr ""
+
+#: ../lib/admin.php:209
+msgid "Raw Embedded Options"
+msgstr ""
+
+#: ../lib/admin.php:214
+msgid "Embed Videos Raw"
+msgstr ""
+
+#: ../lib/admin.php:215
+msgid "not mobile friendly"
+msgstr ""
+
+#: ../lib/admin.php:223
+msgid "Embed Photos Raw"
+msgstr ""
+
+#: ../lib/admin.php:241
+msgid "Advanced Options"
+msgstr ""
+
+#: ../lib/admin.php:246
+msgid "Enqueue Styles"
+msgstr ""
+
+#: ../lib/admin.php:252
+msgid "Add fb-root on top of content"
+msgstr ""
+
+#: ../lib/admin.php:252
+msgid "Some themes may not need this"
+msgstr ""
+
+#: ../lib/admin.php:258
+msgid "Enqueue Lightbox script"
+msgstr ""
+
+#: ../lib/admin.php:264
+msgid "Enqueue WPEmbedFB script"
+msgstr ""
+
+#: ../lib/admin.php:273
+msgid "Save"
+msgstr ""
+
+#: ../lib/admin.php:277
+msgid "Donate!"
+msgstr ""
+
+#: ../lib/admin.php:278
+msgid "Help me keep this plugin up to date"
+msgstr ""
+
+#: ../lib/admin.php:279
+msgid "Click the taco !"
+msgstr ""
+
+#: ../lib/admin.php:288
+msgid "Searching for the Premium version ?"
+msgstr ""
+
+#: ../lib/admin.php:291
+msgid "Embed Full Pages"
+msgstr ""
+
+#: ../lib/admin.php:294
+msgid "Embed Events with cover"
+msgstr ""
+
+#: ../lib/admin.php:297
+msgid "More Resposive Teplates"
+msgstr ""
+
+#: ../lib/admin.php:300
+msgid "Comming Soon"
+msgstr ""
+
+#: ../lib/admin.php:305
+msgid "Plugin Web Site"
+msgstr ""
+
+#: ../lib/core.php:321
+#, php-format
+msgid "%d people like this."
+msgstr ""
+
+#: ../templates/classic/event.php:33 ../templates/default/event.php:37
+msgid "Creator: "
+msgstr ""
+
+#: ../templates/default/com-page.php:25 ../templates/default/com-page.php:26
+#: ../templates/default/page.php:44 ../templates/default/page.php:45
+msgid "Web Site"
+msgstr ""
+
+#: ../templates/default/event.php:29
+msgid "@ "
+msgstr ""

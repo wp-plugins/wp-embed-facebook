@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Embed Facebook v1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-10-24 21:27:06+0000\n"
+"Last-Translator: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
+"Language-Team: Miguel Sirvent <miguel.sirvent@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: lib/admin.php:132
+#@ wp-embed-facebook
+msgid "Facebook application data"
+msgstr "Datos de la App de Facebook"
+
+#: lib/admin.php:241
+#@ wp-embed-facebook
+msgid "Advanced Options"
+msgstr "Opciones Avanzadas"
+
+#: lib/admin.php:246
+#@ wp-embed-facebook
+msgid "Enqueue Styles"
+msgstr "Incluir css"
+
+#: lib/admin.php:252
+#@ wp-embed-facebook
+msgid "Some themes may not need this"
+msgstr "Algunos themes pueden no necesitar esto"
+
+#: lib/admin.php:273
+#@ wp-embed-facebook
+msgid "Save"
+msgstr "Guardar"
+
+#: lib/admin.php:305
+#@ wp-embed-facebook
+msgid "Plugin Web Site"
+msgstr "Sitio Web del Plugin"
+
+#: lib/admin.php:277
+#@ wp-embed-facebook
+msgid "Donate!"
+msgstr "¡Dona!"
+
+#: lib/admin.php:278
+#@ wp-embed-facebook
+msgid "Help me keep this plugin up to date"
+msgstr "Ayúdame a mantener este plugin actualizado"
+
+#: lib/admin.php:279
+#@ wp-embed-facebook
+msgid "Click the taco !"
+msgstr "¡Click en el Taco!"
+
+#: lib/admin.php:288
+#@ wp-embed-facebook
+msgid "Searching for the Premium version ?"
+msgstr "¿ Buscas la versión premium ?"
+
+#: lib/admin.php:300
+#@ wp-embed-facebook
+msgid "Comming Soon"
+msgstr "Proximamente"
+
+#: templates/default/com-page.php:25
+#: templates/default/com-page.php:26
+#: templates/default/page.php:44
+#: templates/default/page.php:45
+#@ wp-embed-facebook
+msgid "Web Site"
+msgstr "Sitio Web"
+
+#: lib/core.php:321
+#, php-format
+#@ wp-embed-facebook
+msgid "%d people like this."
+msgstr "%d les gusta esto"
+
+#: templates/classic/event.php:33
+#: templates/default/event.php:37
+#@ wp-embed-facebook
+msgid "Creator: "
+msgstr "Creador: "
+
+#: templates/classic/page.php:37
+#: templates/default/page.php:40
+#@ wp-embed-facebook
+msgid "category"
+msgstr "categoria"
+
+#: lib/admin.php:150
+#@ wp-embed-Facebook
+msgid "General Options"
+msgstr ""
+
+#: lib/admin.php:155
+#@ wp-embed-facebook
+msgid "Template to use"
+msgstr "Template a usar"
+
+#: lib/admin.php:164
+#@ wp-embed-facebook
+msgid "Embed Max-Width"
+msgstr "Ancho máximo del incrustado"
+
+#: lib/admin.php:170
+#@ wp-embed-facebook
+msgid "Number of Photos <br> on Embedded Albums"
+msgstr "Numero de fotos <br> en Albumes Incrustados"
+
+#: lib/admin.php:176
+#@ wp-embed-facebook
+msgid "Show follow button <br>on Embedded Profiles"
+msgstr "Mostrar boton de segur <br>en Perfiles Incrustados"
+
+#: lib/admin.php:184
+#@ wp-embed-facebook
+msgid "Embedded Fan Pages"
+msgstr "Incrustación de Fan Pages"
+
+#: lib/admin.php:189
+#@ wp-embed-facebook
+msgid "Show like button"
+msgstr "Mostrar boton me gusta"
+
+#: lib/admin.php:195
+#@ wp-embed-facebook
+msgid "Show latest posts"
+msgstr "Mostrar publicaciones recientes"
+
+#: lib/admin.php:201
+#@ wp-embed-facebook
+msgid "Number of posts"
+msgstr "Numero de entradas"
+
+#: lib/admin.php:209
+#@ wp-embed-facebook
+msgid "Raw Embedded Options"
+msgstr "Opciones de incrustaciones en crudo"
+
+#: lib/admin.php:214
+#@ wp-embed-facebook
+msgid "Embed Videos Raw"
+msgstr "Incrustar videos en crudo"
+
+#: lib/admin.php:215
+#@ wp-embed-facebook
+msgid "not mobile friendly"
+msgstr "no amigable con mobiles"
+
+#: lib/admin.php:223
+#@ wp-embed-facebook
+msgid "Embed Photos Raw"
+msgstr "Incrustar fotos en crudo"
+
+#: lib/admin.php:252
+#@ wp-embed-facebook
+msgid "Add fb-root on top of content"
+msgstr "Agregar fb-root al inicio del contenido"
+
+#: lib/admin.php:258
+#@ wp-embed-facebook
+msgid "Enqueue Lightbox script"
+msgstr ""
+
+#: lib/admin.php:264
+#@ wp-embed-facebook
+msgid "Enqueue WPEmbedFB script"
+msgstr ""
+
+#: lib/admin.php:291
+#@ wp-embed-facebook
+msgid "Embed Full Pages"
+msgstr "Incrustado de paginas completo"
+
+#: lib/admin.php:294
+#@ wp-embed-facebook
+msgid "Embed Events with cover"
+msgstr "Incrustar eventos con banner"
+
+#: lib/admin.php:297
+#@ wp-embed-facebook
+msgid "More Resposive Teplates"
+msgstr "Más templates responsivos"
+
+#: templates/default/event.php:29
+#@ wp-embed-facebook
+msgid "@ "
+msgstr "en"
+

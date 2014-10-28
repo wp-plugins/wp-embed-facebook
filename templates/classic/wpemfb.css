@@ -1,0 +1,89 @@
+.wpemfb-container{
+	margin-top:5px;
+    border: 1px solid #23487E;
+    border-radius: 2px;
+    box-shadow: 2px 2px 3px #1A3151;
+    display: inline-table;
+    height: auto;
+  	margin-left: auto ;
+  	margin-right: auto ;    
+}
+.wpemfb-page-container{
+	margin-top:5px;
+    border: 1px solid #23487E;
+    border-radius: 2px;
+    box-shadow: 2px 2px 3px #1A3151;
+    display: inline-table;
+    height: auto;
+  	margin-left: auto ;
+  	margin-right: auto ;  
+  	width: 100%;  
+}
+.wpemfb-cover{
+	width: 100%;
+	background-size: 100%;
+}
+.wpemfb-info a {
+    color: #23487E;
+    text-decoration: none !important;
+}
+.wpemfb-info a:hover {
+    color: #23487E;
+    text-decoration: underline !important;
+}
+.wpemfb-title{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.wpemfb-pic{
+	display: table-cell; 
+	vertical-align: middle; 
+	margin: 0px; 
+	padding: 5px; 
+	width: 10%;
+}
+.wpemfb-desc{
+	display: table-cell; 
+	vertical-align: middle;	
+}
+.wpemfb-thmb {
+    border: 1px solid #808080;
+    height: 60px !important;
+    margin: 1px;
+    padding: 2px;
+    width: 60px !important;
+}
+.wpemfb-link{
+	text-decoration: none !important;
+}
+
+.wpemfb-posts-container{
+	margin:0px auto; 
+	width:100% !important; 
+	border-top: 1px solid whitesmoke; 
+	padding: 3px 0px; 
+	display: table; 
+	cursor: pointer;	
+}
+.wpemfb-post-message{
+	float:left; 
+	padding-left: 3px; 
+	text-align: justify; 
+	margin:0;
+}
+.wpemfb-post-image{
+	float:left; 
+	margin:0; 
+	width:30%; 
+	text-align: center;
+}
+.wpemfb-likes{
+	font-size: 12px; 
+	color: #6d84b4; 
+	font-family: Helvetica	
+}
+.wpemfb-clean-link{
+	border: none !important;
+	font-weight: normal !important;
+	text-decoration: none !important;
+}
