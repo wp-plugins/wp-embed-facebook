@@ -1,10 +1,10 @@
 === WP Embed Facebook ===
 Contributors: poxtron
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J373TWCMJ5CEY&lc=MX&item_name=WP%20Embed%20Facebook&no_note=1&no_shipping=1&rm=1&return=http%3a%2f%2fwww%2ewpembedfb%2ecom%2fyou%2dare%2dawesome&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2NUWW3CZVWDQW
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.0
-Stable tag: 1.6.2
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,7 @@ width and raw are optional, raw only works for videos and photos
 * Change Theme
 * Add fb-root
 
-**[Demo](http://www.wpembedfb.com)**
+**[Demo](http://www.wpembedfb.com/demo/)**
 
 * The information that shown on your post, is from facebook directly, no images or data are stored on your server. 
 
@@ -69,6 +69,12 @@ width and raw are optional, raw only works for videos and photos
 1. Click the taco ! ;)
 
 == Changelog ==
+
+= 1.7 =
+* Better detection of video urls
+* FB js now loaded via jquery
+* More comprehensive admin section
+* Fix -- pictures not showing on chrome
 
 = 1.6.2 =
 * minor bugs
