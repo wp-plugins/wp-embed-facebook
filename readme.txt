@@ -1,10 +1,10 @@
 === WP Embed Facebook ===
 Contributors: poxtron
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2NUWW3CZVWDQW
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.0
-Stable tag: 1.7
+Tested up to: 4.0.1
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Embed a Facebook video, page, event, album, photo, profile or post to any Wordpr
 
 == Description ==
 
-With this plugin you can embed any public facebook video, page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will try to fetch data associated with that url and display it on publishing, if the data is not public, like “invite only” events or private profiles, it'll return a link.
+Embed any public facebook video, page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will fetch data associated with that url and display it, if the data is not public, like “invite only” events or private profiles, will return a link.
 
 = Supported Embeds =
 * Facebook Videos
@@ -45,7 +45,7 @@ width and raw are optional, raw only works for videos and photos
 
 **[Demo](http://www.wpembedfb.com/demo/)**
 
-* The information that shown on your post, is from facebook directly, no images or data are stored on your server. 
+* The information that is shown on your post, is from facebook directly, no images or data are stored on your server. 
 
 = On the next version =
 * Embed Post Raw 
@@ -60,15 +60,24 @@ width and raw are optional, raw only works for videos and photos
 1. Copy on a single line any facebook url.
 1. Enjoy and tell someone !
 
-== Customization ==
- 
-1. Copy the contents of `wp-embed-facebook/templates/default/` to `your-theme/plugins/wp-embed-facebook` 
-1. Untick "Enqueue Styles" option to use your own css. 
-1. Access all facebook data retrieved from the url using `print_r($fb_data)` on any template file.
-1. Use WP_Embed_FB::like_btn($fb_id,$likes=null,$share=false,$faces=false) to personalize like button.
-1. Click the taco ! ;)
+== Frequently Asked Questions ==
+
+= I can only see "Embedded post will show on publish" =
+
+It is posible that another plugin or your theme already has the Facebook SDK for javascript, you can disable the enqueue of the script on the advanced options
+
+== Screenshots ==
+
+1. Fan Page Embed
+2. Album
+3. Profile
+4. Event
 
 == Changelog ==
+
+= 1.7.1 =
+* Documentation Update
+* New advanced option
 
 = 1.7 =
 * Better detection of video urls
@@ -133,3 +142,9 @@ width and raw are optional, raw only works for videos and photos
 
 = 1.0 =
 * Making the plugin.
+
+== Upgrade Notice ==
+
+= 1.7.1 =
+Documentation Update & New advanced option
+
