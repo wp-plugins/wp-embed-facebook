@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.0.1
-Stable tag: 1.7.1
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,14 @@ width and raw are optional, raw only works for videos and photos
 
 It is posible that another plugin or your theme already has the Facebook SDK for javascript, you can disable the enqueue of the script on the advanced options
 
+= I can only embed a max of 100 photos on albums =
+
+This is a facebook limitation, will try to work around it and update this feature on the premium plugin.
+
+= How to change embedded post background =
+
+The embedded post code comes directly from facebook so there is no easy way to change it, for a moment there posts could be queried on the api but for the moment is not working. When it does an update will follow.
+
 == Screenshots ==
 
 1. Fan Page Embed
@@ -74,6 +82,11 @@ It is posible that another plugin or your theme already has the Facebook SDK for
 4. Event
 
 == Changelog ==
+
+= 1.8 =
+* Compatibility with twenty 15 theme
+* New css for embeds
+* Compatibility with premium plugin
 
 = 1.7.1 =
 * Documentation Update
@@ -145,6 +158,7 @@ It is posible that another plugin or your theme already has the Facebook SDK for
 
 == Upgrade Notice ==
 
-= 1.7.1 =
-Documentation Update & New advanced option
+= 1.8 =
+Compatibility with twenty fifteen theme and premium plugin
+
 
