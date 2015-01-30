@@ -1,0 +1,144 @@
+/*
+ * Table structure modification of bootstrap
+ */
+.wpemfb-container {
+  	padding: 10px;
+  	display: inline-block;
+  	font-family: Helvetica; 
+  	border: 1px solid #DEDEDE; 
+	border-radius: 2px;
+	width: 100%;
+	font-size: 14px;
+}
+.wpemfb-row {
+  	margin-left: -10px;
+  	margin-right: -10px;
+  	display: table;
+  	width: 100%;
+}
+.wpemfb-col-1, .wpemfb-col-2, .wpemfb-col-3, .wpemfb-col-4, .wpemfb-col-5, .wpemfb-col-6, .wpemfb-col-7, .wpemfb-col-8, .wpemfb-col-9, .wpemfb-col-10, .wpemfb-col-11, .wpemfb-col-12 {
+  	/*float: left;*/
+  	position: relative;
+  	min-height: 1px;
+  	padding-left: 10px;
+  	padding-right: 10px;  
+  	display: table-cell;
+  	vertical-align: middle;
+  	text-align: left;
+}
+.wpemfb-col-12 {
+  	width: 100%;
+}
+.wpemfb-col-11 {
+  	width: 91.66666667%;
+}
+.wpemfb-col-10 {
+  	width: 83.33333333%;
+}
+.wpemfb-col-9 {
+  	width: 75%;
+}
+.wpemfb-col-8 {
+  	width: 66.66666667%;
+}
+.wpemfb-col-7 {
+  	width: 58.33333333%;
+}
+.wpemfb-col-6 {
+  	width: 50%;
+}
+.wpemfb-col-5 {
+  	width: 41.66666667%;
+}
+.wpemfb-col-4 {
+  	width: 33.33333333%;
+}
+.wpemfb-col-3 {
+  	width: 25%;
+}
+.wpemfb-col-2 {
+  	width: 16.66666667%;
+}
+.wpemfb-col-1 {
+  	width: 8.33333333%;
+}
+
+/**
+ * 	Helpers
+ */
+
+.wpemfb-container > hr {
+  	margin-top: 10px;
+  	margin-bottom: 10px;
+  	border: 0;
+  	border-top: 1px solid #DEDEDE;
+  	-moz-box-sizing: content-box;
+  	-webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  	height: 0;
+  	float: left;
+  	width: 100%
+}
+.wpemfb-text-center{
+	text-align: center;
+}
+.wpemfb-pl-none{
+	padding-left: 0px;
+}
+.wpemfb-color{
+	color: #23487F;	
+} 
+.wpemfb-title{
+	font-size: 20px; 
+	font-weight: bold;
+}
+.wpemfb-container img {
+	display: inline-block !important;
+}
+.wpemfb-pad-top{
+	padding-top:5px;
+}
+/*
+ * Links
+ */
+.wpemfb-container a {
+	font-family: Helvetica !important;
+    color: #23487F !important;
+    text-decoration: none !important;
+    border:0 !important;
+}
+.wpemfb-container a:hover,
+a:focus {
+	color: #23487F;
+    text-decoration: underline;	
+}
+.wpemfb-container a:focus {
+	color: #23487F;
+    text-decoration: underline;	
+}
+/*
+ * Page Embed
+ */
+.wpemfb-page-post{
+	text-align: justify;
+	overflow: hidden;
+}
+a.wpemfb-post-link{
+	color: #6d84b4 !important; 
+	font-size: 12px;	
+}
+.wpemfb-cover{
+	width: 100%; 
+	background-size: 100%; 	
+}
+/**
+ * 	Album Embed
+ */
+.wpemfb-thmb {
+    border: 1px solid #808080;
+    border-radius: 2px;
+    height: 60px !important;
+    margin: 1px;
+    padding: 2px;
+    width: 60px !important;
+}
