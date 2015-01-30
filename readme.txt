@@ -3,8 +3,8 @@ Contributors: poxtron
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.1
-Stable tag: 1.8
+Tested up to: 4.0.1
+Stable tag: 1.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,11 +45,7 @@ width and raw are optional, raw only works for videos and photos
 
 **[Demo](http://www.wpembedfb.com/demo/)**
 
-* The information that is shown on your post, is from facebook directly, no images or data are stored on your server. 
-
-= On the next version =
-* Embed Post Raw 
-* Premium Version
+* The information that is shown on your post, is from facebook directly, no images or data are stored on your server.
 
 == Installation ==
 
@@ -62,17 +58,17 @@ width and raw are optional, raw only works for videos and photos
 
 == Frequently Asked Questions ==
 
-= I can only see "Embedded post will show on publish" =
+= Wny I can only see "Embedded post will show on publish" ? =
 
-It is posible that another plugin or your theme already has the Facebook SDK for javascript, you can disable the enqueue of the script on the advanced options
+It is possible that another plugin or your theme already has the Facebook SDK for javascript. Disable the enqueue of the script on the advanced options
 
-= I can only embed a max of 100 photos on albums =
+= Is there a way to embed an album with more than 100 photos ? =
 
 This is a facebook limitation, will try to work around it and update this feature on the premium plugin.
 
 = How to change embedded post background =
 
-The embedded post code comes directly from facebook so there is no easy way to change it, for a moment there posts could be queried on the api but for the moment is not working. When it does an update will follow.
+The embedded post code comes directly from facebook so there is no easy way to change it (maybe some esoteric javascript). For a moment there posts could be queried on the api but is not working anymore. When it does an update will follow.
 
 == Screenshots ==
 
@@ -82,6 +78,10 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.8.1 =
+* Fix: Warning on Dashboard
+* Update: Readme.txt
 
 = 1.8 =
 * Compatibility with twenty 15 theme
@@ -158,7 +158,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.8 =
-Compatibility with twenty fifteen theme and premium plugin
-
-
+= 1.8.1 =
+Fix Warning on Dashboard and Readme file update.
