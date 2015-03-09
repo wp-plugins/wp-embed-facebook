@@ -232,7 +232,6 @@ class EmbFbAdmin{
 											<tbody>																
 												<tr valign="middle">
 													<th><?php _e('Embed Videos Raw','wp-embed-facebook') ?>
-														<br><small><?php _e('not mobile friendly','wp-embed-facebook') ?></small>
 													</th>
 													
 													<td>
@@ -258,6 +257,7 @@ class EmbFbAdmin{
 											</tbody>
 										</table>										
 									</div>
+									<?php do_action('wpemfb_options'); ?>
 									<h5><?php _e('Advanced Options', 'wp-embed-facebook') ?></h5>	
 									<div>
 										<table>

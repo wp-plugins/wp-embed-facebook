@@ -3,8 +3,8 @@ Contributors: poxtron
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.1
-Stable tag: 1.8.2
+Tested up to: 4.1.1
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,7 +29,7 @@ Embed any public facebook video, page, post, profile, photo or event directly in
 
 = How to use it =
 Put on a single and separate line the Facebook URL.
-Or you can use a shortcode `[facebook=url width=200 raw=true]`
+Or you can use a shortcode `[facebook=url width=200 raw=true]` 
 width and raw are optional, raw only works for videos and photos
 
 = Options =
