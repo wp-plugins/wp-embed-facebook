@@ -79,6 +79,9 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Changelog ==
 
+= 1.8.3 =
+* Better Video Embeds
+
 = 1.8.2 =
 * Fix: Error on some systems nothing critic.
 
@@ -161,5 +164,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.8.2 =
-Fix: Error on some systems nothing critic
+= 1.8.3 =
+Better video embeds
