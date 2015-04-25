@@ -9,11 +9,12 @@ class EmbFbAdmin{
 		    $url = "http://ajax.googleapis.com/ajax/libs/jqueryui/".$queryui->ver."/themes/smoothness/jquery-ui.css";
 		    wp_enqueue_style('jquery-ui-start', $url, false, null);		
 		}
-		$translation_array = array( 'local' => get_locale(), 'fb_id'=>get_option('wpemfb_app_id'), 'fb_root'=>get_option('wpemfb_fb_root') );
-		wp_localize_script( 'wpemfb', 'WEF', $translation_array );				
+		$translation_array = array( 'local' => get_locale(), 'fb_id'=>get_site_option('wpemfb_app_id'), 'fb_root'=>get_site_option('wpemfb_fb_root') );
+		wp_localize_script( 'wpemfb', 'WEF', $translation_array );
+        wp_enqueue_script('wpemfb');
 	}
 	static function admin_init(){
-		$theme = get_option('wpemfb_theme');
+		$theme = get_site_option('wpemfb_theme');
 		add_editor_style( WPEMFBURL.'templates/'.$theme.'/wpemfb.css' );	
 	}
 	static function add_page(){
@@ -22,99 +23,115 @@ class EmbFbAdmin{
 	static function savedata(){
 		if(isset($_POST['wpemfb_app_secret'], $_POST['wpemfb_app_id' ] )) {
 			if($_POST['wpemfb_app_id'] && $_POST['wpemfb_app_secret']){
-				update_option('wpemfb_app_id',$_POST['wpemfb_app_id']);
-				update_option('wpemfb_app_secret',$_POST['wpemfb_app_secret']);
+				update_site_option('wpemfb_app_id',$_POST['wpemfb_app_id']);
+				update_site_option('wpemfb_app_secret',$_POST['wpemfb_app_secret']);
 			}
 			if(isset($_POST['wpemfb_max_width'])){
-				$prop = get_option('wpemfb_proportions') * $_POST['wpemfb_max_width'];
-				update_option('wpemfb_max_width', $_POST['wpemfb_max_width']);
-				update_option('wpemfb_height', $prop );
+				$prop = get_site_option('wpemfb_proportions') * $_POST['wpemfb_max_width'];
+				update_site_option('wpemfb_max_width', $_POST['wpemfb_max_width']);
+				update_site_option('wpemfb_height', $prop );
 			}
 			if(isset($_POST['wpemfb_max_photos'])){
-				update_option('wpemfb_max_photos', $_POST['wpemfb_max_photos']);
+				update_site_option('wpemfb_max_photos', $_POST['wpemfb_max_photos']);
 			}
 			if(isset($_POST['wpemfb_max_posts'])){
-				update_option('wpemfb_max_posts', $_POST['wpemfb_max_posts']);
+				update_site_option('wpemfb_max_posts', $_POST['wpemfb_max_posts']);
 			}						
 			if(isset($_POST['wpemfb_theme'])){
-				update_option('wpemfb_theme', $_POST['wpemfb_theme']);
+				update_site_option('wpemfb_theme', $_POST['wpemfb_theme']);
 			}			
 			if(isset($_POST['wpemfb_show_like'])){
-				update_option('wpemfb_show_like', 'true');
+				update_site_option('wpemfb_show_like', 'true');
 			}else{
-				update_option('wpemfb_show_like', 'false');
+				update_site_option('wpemfb_show_like', 'false');
 			}			
 			if(isset($_POST['wpemfb_enqueue_style'])){
-				update_option('wpemfb_enqueue_style', 'true');
+				update_site_option('wpemfb_enqueue_style', 'true');
 			}else{
-				update_option('wpemfb_enqueue_style', 'false');
+				update_site_option('wpemfb_enqueue_style', 'false');
 			}
 			if(isset($_POST['wpemfb_fb_root'])){
-				update_option('wpemfb_fb_root', 'true');
+				update_site_option('wpemfb_fb_root', 'true');
 			}else{
-				update_option('wpemfb_fb_root', 'false');
+				update_site_option('wpemfb_fb_root', 'false');
 			}
 			if(isset($_POST['wpemfb_show_follow'])){
-				update_option('wpemfb_show_follow', 'true');
+				update_site_option('wpemfb_show_follow', 'true');
 			}else{
-				update_option('wpemfb_show_follow', 'false');
+				update_site_option('wpemfb_show_follow', 'false');
 			}
 			if(isset($_POST['wpemfb_raw_video'])){
-				update_option('wpemfb_raw_video', 'true');
+				update_site_option('wpemfb_raw_video', 'true');
 			}else{
-				update_option('wpemfb_raw_video', 'false');
+				update_site_option('wpemfb_raw_video', 'false');
 			}
 			if(isset($_POST['wpemfb_raw_photo'])){
-				update_option('wpemfb_raw_photo', 'true');
+				update_site_option('wpemfb_raw_photo', 'true');
 			}else{
-				update_option('wpemfb_raw_photo', 'false');
+				update_site_option('wpemfb_raw_photo', 'false');
 			}
 			if(isset($_POST['wpemfb_show_posts'])){
-				update_option('wpemfb_show_posts', 'true');
+				update_site_option('wpemfb_show_posts', 'true');
 			}else{
-				update_option('wpemfb_show_posts', 'false');
+				update_site_option('wpemfb_show_posts', 'false');
 			}
 			if(isset($_POST['wpemfb_raw_post'])){
-				update_option('wpemfb_raw_post', 'true');
+				update_site_option('wpemfb_raw_post', 'true');
 			}else{
-				update_option('wpemfb_raw_post', 'false');
+				update_site_option('wpemfb_raw_post', 'false');
 			}
 			if(isset($_POST['wpemfb_enq_lightbox'])){
-				update_option('wpemfb_enq_lightbox', 'true');
+				update_site_option('wpemfb_enq_lightbox', 'true');
 			}else{
-				update_option('wpemfb_enq_lightbox', 'false');
+				update_site_option('wpemfb_enq_lightbox', 'false');
 			}
 			if(isset($_POST['wpemfb_enq_wpemfb'])){
-				update_option('wpemfb_enq_wpemfb', 'true');
+				update_site_option('wpemfb_enq_wpemfb', 'true');
 			}else{
-				update_option('wpemfb_enq_wpemfb', 'false');
+				update_site_option('wpemfb_enq_wpemfb', 'false');
 			}
 			if(isset($_POST['wpemfb_enq_fbjs'])){
-				update_option('wpemfb_enq_fbjs', 'true');
+				update_site_option('wpemfb_enq_fbjs', 'true');
 			}else{
-				update_option('wpemfb_enq_fbjs', 'false');
-			}			
+				update_site_option('wpemfb_enq_fbjs', 'false');
+			}
+            if(isset($_POST['wpemfb_ev_local_tz'])){
+                update_site_option('wpemfb_ev_local_tz', 'true');
+            }else{
+                update_site_option('wpemfb_ev_local_tz', 'false');
+            }
+
 		}
-		do_action('wpemfb_admin_savedata');
+        /**
+         * Save extra options, requires coordination with 'wpemfb_options' action
+         *
+         * @since 1.8
+         *
+         */
+		do_action('wpemfb_admin_save_data');
 	}
 	static function embedfb_page() {
-		if(isset($_POST['submit']) && check_admin_referer( 'wp-embed-facebook','save-data' )){
+		if( isset($_POST['save-data']) && wp_verify_nonce( $_POST['save-data'], 'wp-embed-facebook')){
 			self::savedata();
+
 		}
-		$checked = (get_option('wpemfb_enqueue_style') === 'true') ? 'checked' : '' ;
-		$checked2 = (get_option('wpemfb_show_like') === 'true') ? 'checked' : '' ;
-		$checked3 = (get_option('wpemfb_fb_root') === 'true') ? 'checked' : '' ;
-		$checked4 = (get_option('wpemfb_show_follow') === 'true') ? 'checked' : '' ;
-		$checked5 = (get_option('wpemfb_raw_video') === 'true') ? 'checked' : '' ;
-		$checked6 = (get_option('wpemfb_raw_photo') === 'true') ? 'checked' : '' ;
-		$checked7 = (get_option('wpemfb_show_posts') === 'true') ? 'checked' : '' ;
+		$checked = (get_site_option('wpemfb_enqueue_style') === 'true') ? 'checked' : '' ;
+		$checked2 = (get_site_option('wpemfb_show_like') === 'true') ? 'checked' : '' ;
+		$checked3 = (get_site_option('wpemfb_fb_root') === 'true') ? 'checked' : '' ;
+		$checked4 = (get_site_option('wpemfb_show_follow') === 'true') ? 'checked' : '' ;
+		$checked5 = (get_site_option('wpemfb_raw_video') === 'true') ? 'checked' : '' ;
+		$checked6 = (get_site_option('wpemfb_raw_photo') === 'true') ? 'checked' : '' ;
+		$checked7 = (get_site_option('wpemfb_show_posts') === 'true') ? 'checked' : '' ;
 		
-		$checked8 = (get_option('wpemfb_raw_post') === 'true') ? 'checked' : '' ;
-		$checked9 = (get_option('wpemfb_enq_lightbox') === 'true') ? 'checked' : '' ;
-		$checked10 = (get_option('wpemfb_enq_wpemfb') === 'true') ? 'checked' : '' ;
-		$checked11 = (get_option('wpemfb_enq_fbjs') === 'true') ? 'checked' : '' ;
-		$sel1 = (get_option('wpemfb_theme') === 'default') ? 'selected' : '' ;
-		$sel2 = (get_option('wpemfb_theme') === 'classic') ? 'selected' : '' ;
+		$checked8 = (get_site_option('wpemfb_raw_post') === 'true') ? 'checked' : '' ;
+		$checked9 = (get_site_option('wpemfb_enq_lightbox') === 'true') ? 'checked' : '' ;
+		$checked10 = (get_site_option('wpemfb_enq_wpemfb') === 'true') ? 'checked' : '' ;
+		$checked11 = (get_site_option('wpemfb_enq_fbjs') === 'true') ? 'checked' : '' ;
+        $checked12 = (get_site_option('wpemfb_ev_local_tz', 'true') === 'true') ? 'checked' : '' ;
+
+		$sel1 = (get_site_option('wpemfb_theme') === 'default') ? 'selected' : '' ;
+		$sel2 = (get_site_option('wpemfb_theme') === 'classic') ? 'selected' : '' ;
+
 		?>
 		<style>
 			.ui-widget-content th{
@@ -155,13 +172,13 @@ class EmbFbAdmin{
 												<tr valign="middle">
 													<th>App ID</th>
 													<td>
-														<input type="text" name="wpemfb_app_id" required value="<?php echo get_option('wpemfb_app_id') ?>" size="38"  />
+														<input type="text" name="wpemfb_app_id" required value="<?php echo get_site_option('wpemfb_app_id') ?>" size="38"  />
 													</td>
 												</tr>
 												<tr valign="middle">
 													<th>App Secret</th>
 													<td>
-														<input type="text" name="wpemfb_app_secret" required value="<?php echo get_option('wpemfb_app_secret') ?>" size="38"  />
+														<input type="text" name="wpemfb_app_secret" required value="<?php echo get_site_option('wpemfb_app_secret') ?>" size="38"  />
 													</td>
 												</tr>
 										</table>										
@@ -176,20 +193,28 @@ class EmbFbAdmin{
 														<select name="wpemfb_theme">
 														  <option value="default" <?php echo $sel1 ?> >Default</option>
 														  <option value="classic" <?php echo $sel2 ?> >Classic</option>
-														  <?php do_action('wpemfb_admin_theme'); ?>
+														  <?php
+                                                          /**
+                                                           * Add a new theme option
+                                                           *
+                                                           * @since 1.8
+                                                           *
+                                                           */
+                                                          do_action('wpemfb_admin_theme');
+                                                          ?>
 														</select>											
 													</td>											
 												</tr>
 												<tr valign="middle">
 													<th><?php _e('Embed Max-Width','wp-embed-facebook') ?></th>
 													<td>
-														<input type="number" name="wpemfb_max_width" value="<?php echo get_option('wpemfb_max_width') ?>"  />
+														<input type="number" name="wpemfb_max_width" value="<?php echo get_site_option('wpemfb_max_width') ?>"  />
 													</td>
 												</tr>
 												<tr valign="middle">
-													<th><?php _e('Number of Photos <br> on Embedded Albums','wp-embed-facebook') ?></th>
+													<th><?php _e('Number of Photos <br>on Embedded Albums','wp-embed-facebook') ?></th>
 													<td>
-														<input type="number" name="wpemfb_max_photos" value="<?php echo get_option('wpemfb_max_photos') ?>"  />
+														<input type="number" name="wpemfb_max_photos" value="<?php echo get_site_option('wpemfb_max_photos') ?>"  />
 													</td>
 												</tr>	
 												<tr valign="middle">
@@ -220,9 +245,15 @@ class EmbFbAdmin{
 												<tr valign="middle">
 													<th><?php _e('Number of posts','wp-embed-facebook') ?></th>
 													<td>
-														<input type="number" name="wpemfb_max_posts" value="<?php echo get_option('wpemfb_max_posts') ?>"  style="width: 60px;"/>
+														<input type="number" name="wpemfb_max_posts" value="<?php echo get_site_option('wpemfb_max_posts') ?>"  style="width: 60px;"/>
 													</td>
-												</tr>		
+												</tr>
+                                                <tr valign="middle">
+                                                    <th><?php _e('Show events on local time','wp-embed-facebook') ?></th>
+                                                    <td>
+                                                        <input type="checkbox" name="wpemfb_ev_local_tz"  <?php echo $checked12 ?> />
+                                                    </td>
+                                                </tr>
 											</tbody>
 										</table>										
 									</div>
@@ -253,11 +284,20 @@ class EmbFbAdmin{
 													</td>
 												</tr>
 												*/
-												 ?>								
+												 ?>
+
 											</tbody>
 										</table>										
 									</div>
-									<?php do_action('wpemfb_options'); ?>
+									<?php
+                                    /**
+                                     * Add more options to the plugin page save them with 'wpemfb_admin_save_data' action
+                                     *
+                                     * @since 1.8
+                                     *
+                                     */
+                                    do_action('wpemfb_options');
+                                    ?>
 									<h5><?php _e('Advanced Options', 'wp-embed-facebook') ?></h5>	
 									<div>
 										<table>

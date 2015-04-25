@@ -2,7 +2,7 @@
 /*
  * Main Class of the plugin.
  */
-wp_embed_register_handler("wpembedfb","/(http|https):\/\/www\.facebook\.com\/([^<\s]*)/",array("WP_Embed_FB","embed_register_handler"));
+
 class WP_Embed_FB {
 	static $fbsdk;
 	static $width = '';
@@ -10,49 +10,38 @@ class WP_Embed_FB {
 	static $theme = '';
 	static $raw = '';
 	static $premium = '';
-	/*
+    static $num_posts = '';
+	/**
 	 * Save default values to data base
 	 */
 	static function install(){
 		$defaults = self::getdefaults();
 		foreach ($defaults as $option => $value) {
-			if ( !is_multisite() ) {
-				$opt = get_option($option);
-				if($opt === false)
-					update_option($option, $value);
-			} 
-			else { 
-				$opt = get_site_option($option);
-				if($opt === false)
-			    	update_site_option($option, $value);  
-			}
+            $opt = get_site_option($option);
+            if($opt === false)
+                update_site_option($option, $value);
 			if(!isset($type))
 				$type = $opt==false?"activated":"reactivated";
 		}
-		self::whois($type);
+		static::whois($type);
 		return;		
 	}
-	/*
+	/**
 	 * Delete all plugin options on uninstall
 	 */
 	static function uninstall(){
 		$defaults = self::getdefaults();
 		foreach ($defaults as $option ) {
-			if ( !is_multisite() ) {
-				delete_option($option);
-			} 
-			else { 
-			    delete_site_option($option);  
-			}			
+            delete_site_option($option);
 		}
-		self::whois('uninstalled');
+		static::whois('uninstalled');
 		return;		
 	}
 	static function deactivate(){
-		self::whois('deactivated');
+		static::whois('deactivated');
 		return;
 	}
-	/*
+	/**
 	 * Default options
 	 */	
 	static function getdefaults(){
@@ -75,7 +64,8 @@ class WP_Embed_FB {
 						'wpemfb_raw_post'		=> 'false',
 						'wpemfb_enq_lightbox'	=> 'true',
 						'wpemfb_enq_wpemfb'		=> 'true',
-						'wpemfb_enq_fbjs'		=> 'true'
+						'wpemfb_enq_fbjs'		=> 'true',
+                        'wpemfb_ev_local_tz'    => 'true'
 						);
 	}
 	//("uninstalled","deactivated","activated","reactivated")
@@ -85,21 +75,21 @@ class WP_Embed_FB {
 		@file_get_contents("http://www.wpembedfb.com/api/?whois=$install&site_url=$home");
 		return true;
 	}
-	/*
+	/**
 	 * load translations and facebook sdk
 	 */
 	static function init(){
 		load_plugin_textdomain( 'wp-embed-facebook', false, WPEMFBSLUG . '/lang' );
 		FaceInit::init();
 	}
-	/*
+	/**
 	 * Enqueue wp embed facebook styles
 	 */
 	static function wp_enqueue_scripts(){
 		if(get_option('wpemfb_enqueue_style') == 'true'){
 			$theme = get_option('wpemfb_theme');
-	        wp_register_style( 'wpemfb-style', WPEMFBURL.'/templates/'.$theme.'/wpemfb.css');
-			wp_register_style( 'wpemfb-lightbox', WPEMFBURL.'/lib/lightbox2/css/lightbox.css');			
+	        wp_register_style( 'wpemfb-style', WPEMFBURL.'templates/'.$theme.'/wpemfb.css');
+			wp_register_style( 'wpemfb-lightbox', WPEMFBURL.'lib/lightbox2/css/lightbox.css');
 			wp_enqueue_style('wpemfb-style');
 			wp_enqueue_style('wpemfb-lightbox');			
 		}
@@ -127,13 +117,10 @@ class WP_Embed_FB {
 			wp_localize_script( 'wpemfbjs', 'WEF', $translation_array );		
 		}		
 	}
-	/* ?????? */
-	static function tiny_mce_before_init(){
-		$theme = get_option('wpemfb_theme');
-		wp_register_style( 'wpemfb-style', WPEMFBURL.'templates/'.$theme.'/wpemfb.css');
-	}
-	/*
-	 * the_content filter to process fb url's
+	/**
+	 * Find facebook urls on a string and return content
+	 * @param string post content
+     * @return string content with embeds if present.
 	 */
 	static function the_content($the_content){
 		preg_match_all("/<p>(http|https):\/\/www\.facebook\.com\/([^<\s]*)<\/p>/", $the_content, $matches, PREG_SET_ORDER);
@@ -149,7 +136,8 @@ class WP_Embed_FB {
 	}
 	/**
 	 * Extract fb_id from the url
-	 * @param array $match[2]=the juice from the url
+	 * @param array $match[2]=url without ' https://www.facebook.com/ '
+     * @return string Embedded content
 	 */
 	static function fb_embed($match){ 
 		//extract fbid from url good for profiles, pages, comunity pages, raw photos, events
@@ -177,9 +165,15 @@ class WP_Embed_FB {
 				$fb_id = $ids[1];				
 			}
 		}
-		//TODO: check if its event and pull cover photo, probably only fro premium
-		//do_action('wpemfb_embed',$type,$clean,$vars,$match);
-		$type = apply_filters('wpemfb_embed_type',$type,$clean);		
+        /**
+         * Filter the embed type.
+         *
+         * @since 1.8
+         *
+         * @param string $type the embed type.
+         * @param array $clean url parts of the request.
+         */
+		$type = apply_filters('wpemfb_embed_type',$type,$clean);
 		//its a post
 		if( array_search('posts',$clean) !== false  ){
 			$fb_data = array( 'link' => $match[2],'is_post' => '' );
@@ -197,7 +191,7 @@ class WP_Embed_FB {
 		if(isset($vars['v'])){ //is video
 			if($raw_video == 'true'){
 				//$fb_data = array( 'v_id' => $vars['v'], 'is_video' => '' );
-				return self::fb_api_get($vars['v'], $match[2]);
+				return static::fb_api_get($vars['v'], $match[2]);
 				//return self::print_fb_data($fb_data);					
 			} else {
 				$fb_data = array( 'link' => $match[2],'is_post' => '' );
@@ -207,65 +201,95 @@ class WP_Embed_FB {
 		//photos
 		if( 'photo.php' == $last || ( array_search('photos',$clean) !== false ) ){
 			if($raw_photo == 'true'){
-				return self::fb_api_get($fb_id, $match[2]);		
+				return static::fb_api_get($fb_id, $match[2]);		
 			} else {
 				$fb_data = array( 'link' => $match[2],'is_post' => '' );
 				return self::print_fb_data($fb_data);						
 			}				
 		}
 		
-		return self::fb_api_get($fb_id, $match[2], $type);
+		return static::fb_api_get($fb_id, $match[2], $type);
 	}
 	/**
-	 * get data from fb using $fbsdk->api('/'.$fb_id) :)
-	 * 
+	 * get data from fb using WP_Embed_FB::$fbsdk->api('/'.$fb_id) :)
+     *
+	 * @param int facebook id
+     * @param string facebook url
+     * @type string type of embed
+     * @return facebook api resulto or error
 	 */
 	static function fb_api_get($fb_id, $url, $type=""){
 		$wp_emb_fbsdk = self::$fbsdk;
-		if(!self::$premium){
 			try {
-				if(empty($type))
-					$fb_data = $wp_emb_fbsdk->api('/v1.0/'.$fb_id);
-				elseif($type == 'album')
-					$fb_data = $wp_emb_fbsdk->api('/'.$fb_id.'?fields=name,id,from,photos.fields(name,picture,source).limit('.get_option("wpemfb_max_photos").')');
-					//$res = '<pre>'.print_r($fb_data,true).'</pre>'; //to inspect what elements are queried by default
-				if(isset($fb_data['category']) && get_option("wpemfb_show_posts") == "true")
-					$fb_data = $fb_data + $wp_emb_fbsdk->api('/'.$fb_data['id'].'?fields=posts.limit('.get_option("wpemfb_max_posts").'){message,shares,link,picture,object_id,likes.limit(1).summary(true),comments.limit(1).summary(true)}');
-				elseif(isset($fb_data['embed_html']))
-					$fb_data = array_merge($fb_data,array('is_video' => '1'));
+				if($type == 'album')
+                    $api_string = $fb_id.'?fields=name,id,from,description,photos.fields(name,picture,source).limit('.get_option("wpemfb_max_photos").')';
+                else
+                    $api_string = $fb_id;
+
+                /**
+                 * Filter the fist fbsdk query
+                 *
+                 * @since 1.9
+                 *
+                 * @param string $api_string The fb api request string according to type
+                 * @param string $fb_id The id of the object being requested.
+                 * @param string $type The detected type of embed
+                 *
+                 */
+                $fb_data = $wp_emb_fbsdk->api('/v2.0/'.apply_filters('wpemfb_api_string',$api_string,$fb_id,$type));
+                $num_posts = self::$num_posts !== '' && is_numeric(self::$num_posts) ? self::$num_posts : get_option("wpemfb_max_posts");
+                $api_string2 = '';
+                if(isset($fb_data['embed_html']))
+                    $fb_data = array_merge($fb_data,array('is_video' => '1'));
+                elseif( isset($fb_data['category']) && get_option("wpemfb_show_posts") == "true")
+                    $api_string2 = '/'.$fb_data['id'].'?fields=posts.limit('.$num_posts.'){message,shares,link,picture,object_id,likes.limit(1).summary(true),comments.limit(1).summary(true)}';
+
+                /**
+                 * Filter the second fbsdk query if necessary
+                 *
+                 * @since 1.9
+                 *
+                 * @param string $api_string2 The second request string empty if not necessary
+                 * @param array $fb_data The result from the first query
+                 * @param string $type The detected type of embed
+                 *
+                 */
+                $api_string2 = apply_filters('wpemfb_2nd_api_string',$api_string2,$fb_data,$type);
+
+                if(!empty($api_string2)){
+                    $extra_data = $wp_emb_fbsdk->api('/v2.0/'.$api_string2);
+                    $fb_data = array_merge($fb_data,$extra_data);
+                }
+                /**
+                 * Filter all data received from facebook.
+                 *
+                 * @since 1.9
+                 *
+                 * @param array $fb_data the final result
+                 * @param string $type The detected type of embed
+                 */
+                $fb_data = apply_filters('wpemfb_fb_data',$fb_data,$type);
+
 				$res = self::print_fb_data($fb_data);
 			} catch(FacebookApiException $e) {
 				$res = '<p><a href="https://www.facebook.com/'.$url.'" target="_blank" rel="nofollow">https://www.facebook.com/'.$url.'</a>';
-				//uncoment this lines to debug
-				///*
 				if(is_super_admin()){
 					$error = $e->getResult();
-					$res .= '<br><span style="color: red">'.__('This facebook link is not public', 'wp-embed-facebook').'</span>';
+					$res .= '<br><span style="color: #4a0e13">' .__('This facebook link is not public', 'wp-embed-facebook').'</span>';
 					$res .= '<br>';
 					$res .= $error['error']['message'];
 				}
-				//*/ 
 				$res .= '</p>';
 			}
-		}
-		else
-			$res = WP_Embed_FB_Premium::fb_api_get($fb_id, $url, $type, $wp_emb_fbsdk);
 		return $res;		
 	}
 	/**
 	 * find out what kind of data we got from facebook
-	 * @param array result from facebook
+     *
+	 * @param array $fb_data result from facebook
+     * @return string embedded content
 	 */
 	static function print_fb_data($fb_data){
-		if(empty(self::$width)){
-			$width = get_option('wpemfb_max_width');
-			$height = get_option('wpemfb_height');
-		} else {
-			$width = self::$width;
-			$height = self::$height;
-		}
-		$prop = get_option('wpemfb_proportions');
-		
 		if(isset($fb_data['is_video'])) { //is raw video
 			$template = self::locate_template('video');				
 		} elseif(isset($fb_data['is_post'])) { //is post
@@ -281,30 +305,62 @@ class WP_Embed_FB {
 				$template = self::locate_template('com-page'); //is community page
 			}else {
 				$default = self::locate_template('page');
-				/*
-				 *To add a new template for a specific facebook category for example a Museum add this to your functions.php file
-				 * 
-					add_filter( 'wpemfb_category_template', 'your_function', 10, 2 );
-					function your_function( $default, $category ) {
-						if($category == 'Museum/art gallery')
-							return WP_Embed_FB::locate_template('museum');
-						else
-							return $default;
-					}
-				 * then create a file named museum.php inside your-theme/plugins/wp-embed-facebook/
-				 */ 
+                /**
+                 * Add a new template for a specific facebook category
+                 *
+                 * for example a Museum create the new template at your-theme/plugins/wp-embed-facebook/museum.php
+                 * then on functions.php of your theme
+                 *
+                 * add_filter( 'wpemfb_category_template', 'your_function', 10, 2 );
+                 *
+                 * function your_function( $default, $category ) {
+                 *      if($category == 'Museum/art gallery')
+                 *          return WP_Embed_FB::locate_template('museum');
+                 *      else
+                 *      return $default;
+                 * }
+                 *
+                 * @since 1.0
+                 *
+                 * @param string $default file full path
+                 * @param array $fb_data['category']  data from facebook
+                 */
 				$template = apply_filters('wpemfb_category_template', $default, $fb_data['category']);
 			}
 		} else { //is profile
 			$template = self::locate_template('profile');
 		}
-		ob_start();
-		include(apply_filters('wpemfb_template',$template,$fb_data));
+        //get default variables to use on templates
+        if(empty(self::$width)){
+            $width = get_option('wpemfb_max_width');
+            $height = get_option('wpemfb_height');
+        } else {
+            $width = self::$width;
+            $height = self::$height;
+        }
+        $prop = get_option('wpemfb_proportions');
+        ob_start();
+        //show embed post on admin
+        if(is_admin() && isset($fb_data['is_post'])) : ?>
+            <script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+        <?php endif;
+        /**
+         * Change the file to include on a certain embed.
+         *
+         * @since 1.8
+         *
+         * @param string $template file full path
+         * @param array $fb_data data from facebook
+         */
+        $template = apply_filters('wpemfb_template',$template,$fb_data);
+		include( $template );
 		return preg_replace('/^\s+|\n|\r|\s+$/m', '', ob_get_clean());			
 	}
 	/**
 	 * Locate the template inside plugin or theme
-	 * @param string Template Name album,profile...
+     *
+	 * @param string $template_name Template file name
+     * @return string Template location
 	 */
 	static function locate_template($template_name){
 		$theme = get_option('wpemfb_theme');
@@ -324,7 +380,8 @@ class WP_Embed_FB {
 	 */ 
 	/**
 	 * If a user has a lot of websites registered on fb this function will only link to the first one 
-	 * @param string urls separated by spaces
+	 * @param string $urls separated by spaces
+     * @return string first url
 	 */
 	static function getwebsite($urls){
 		$url = explode(' ',$urls);
@@ -332,17 +389,23 @@ class WP_Embed_FB {
 	}
 	/**
 	 * Shows a like button or a facebook like count of a page depending on settings
-	 * @param int facebook id
-	 * @param int show likes count
-	 * @param bool show share button
-	 * @param bool show faces
+	 * @param int $fb_id facebook id
+	 * @param int $likes show likes count
+	 * @param bool $share show share button
+	 * @param bool $faces show faces
 	 */
 	static function like_btn($fb_id,$likes=null,$share=false,$faces=false){
 		$opt = get_option('wpemfb_show_like');
 		if($opt === 'true') :
 			ob_start();
 			?>
-				<div class="fb-like" data-href="https://facebook.com/<?php echo $fb_id ?>" data-layout="button_count" data-action="like" data-show-faces="<?php echo $faces ? 'true' : 'false' ?>" data-share="<?php echo $share ? 'true' : 'false' ?>" ></div>		
+				<div class="fb-like"
+                     data-href="https://facebook.com/<?php echo $fb_id ?>"
+                     data-layout="button_count"
+                     data-action="like"
+                     data-show-faces="<?php echo $faces ? 'true' : 'false' ?>"
+                     data-share="<?php echo $share ? 'true' : 'false' ?>" >
+                </div>
 			<?php
 			echo ob_get_clean();
 			return;
@@ -353,23 +416,29 @@ class WP_Embed_FB {
 	}
 	/**
 	 * Shows a follow button depending on settings
-	 * @param facebook id
+	 * @param int $fb_id facebook id or username
 	 */
 	static function follow_btn($fb_id){
 		$opt = get_option('wpemfb_show_follow');
 		if($opt === 'true') :
 			ob_start();
 			?>
-				<div class="fb-follow" data-href="https://www.facebook.com/<?php echo $fb_id ?>" data-colorscheme="light" data-layout="button_count" data-show-faces="false"></div>
+				<div class="fb-follow"
+                     data-href="https://www.facebook.com/<?php echo $fb_id ?>"
+                     data-colorscheme="light"
+                     data-layout="button_count"
+                     data-show-faces="false">
+                </div>
 			<?php
 			ob_end_flush();
 			return; 
 		endif;			
 	}	
 	/**
-	 * Shotcode function
+	 * Shortcode function
 	 * [facebook='url' width='600'] width is optional
-	 * @param array [0]=>url ['width']=>embed width ['raw']=>for videos and photos  
+	 * @param array $atts [0]=>url ['width']=>embed width ['raw']=>for videos and photos
+     * @return string
 	 */ 
 	static function shortcode($atts){
 		if(!empty($atts) && isset($atts[0])){
@@ -381,11 +450,12 @@ class WP_Embed_FB {
 			}
 			if(isset($atts['raw'])){
 				self::$raw = $atts['raw'];
-			}			
+			}
+            if(isset($atts['posts'])){
+                self::$num_posts = $atts['posts'];
+            }
 			$embed = self::the_content($url);
-			self::$height = '';
-			self::$width = '';
-			self::$raw = '';
+			self::$height = self::$width = self::$raw = self::$num_posts = '';
 			return $embed;
 		}
 		return;
@@ -402,29 +472,32 @@ class WP_Embed_FB {
 	}
 	static function plugins_loaded(){
 		$lic = get_option('wpemfb_license','');
-		if(class_exists('WP_Embed_FB_Premium') && !empty($lic) )
+		if(class_exists('Wpemfb_Premium') && !empty($lic) )
 			self::$premium = true;
 		else
 			self::$premium = false;
 	}
 }
 
-/*
- * Trigering the FaceInit::init(); will give you access to the fb php sdk on FaceInit::$fbsdk which you can use to make any call shown here
+/**
+ * Triggering the FaceInit::init(); will give you access to the fb php sdk on FaceInit::$fbsdk which you can use to make any call shown here
  * https://developers.facebook.com/docs/reference/php/ 
  */	
 class FaceInit {
 	static $fbsdk;
 	static function init(){
-		if(!class_exists('Facebook'))
-			require('fb/facebook.php');
+		require('fb/facebook.php');
 		$config = array();
 		$config['appId'] = get_option('wpemfb_app_id');
 		$config['secret'] = get_option('wpemfb_app_secret');
 		$config['fileUpload'] = false; // optional
 		if($config['appId'] != '0' && $config['secret'] != '0' )
-			self::$fbsdk = new Facebook($config);
+			self::$fbsdk = new Sigami_Facebook($config);
 		else
 			self::$fbsdk = 'unactive';
 	}
 }
+
+?>
+
+

@@ -3,8 +3,8 @@ Contributors: poxtron
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.1.1
-Stable tag: 1.8.3
+Tested up to: 4.1.2
+Stable tag: 1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,7 @@ width and raw are optional, raw only works for videos and photos
 
 = Wny I can only see "Embedded post will show on publish" ? =
 
-It is possible that another plugin or your theme already has the Facebook SDK for javascript. Disable the enqueue of the script on the advanced options
+It is possible that another plugin or your theme already has the Facebook SDK for javascript. Disable the enqueue of the script on the advanced options and test, if this does not work create a new thread on the support forum, with a link.
 
 = Is there a way to embed an album with more than 100 photos ? =
 
@@ -78,6 +78,14 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9 =
+* Facebook video embed code in case video type is not supported
+* Fix: Compatibility with other facebook plugins thanks to ozzWANTED
+* New filter: 'wpemfb_api_string' and 'wpemfb_2nd_api_string'
+* Show embedded posts on admin
+* Fix undefined variable on js
+* Fix languages on event time
 
 = 1.8.3 =
 * Better Video Embeds
@@ -164,5 +172,10 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.8.3 =
-Better video embeds
+= 1.9 =
+* Facebook video embed code in case video type is not supported
+* Fix: Compatibility with other facebook plugins thanks to ozzWANTED
+* New filters: 'wpemfb_api_string' and 'wpemfb_2nd_api_string'
+* Show embedded posts on admin
+* Fix undefined variable on js
+* Fix languages on event time

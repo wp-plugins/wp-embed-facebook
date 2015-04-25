@@ -41,7 +41,7 @@
 				<div style="float: right;"><?php WP_Embed_FB::like_btn($fb_data['id'],$fb_data['likes']) ?></div>	
 			</div>
 	</div>	
-	<?php if($show_posts) :  ?>
+	<?php if($show_posts && isset($fb_data['posts'])) :  ?>
 		<?php foreach($fb_data['posts']['data'] as $fbpost) : ?>
 
 			<?php if(isset($fbpost['picture']) || isset($fbpost['message'])) : ?>

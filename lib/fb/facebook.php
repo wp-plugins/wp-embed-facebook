@@ -14,14 +14,14 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
-require_once "base_facebook.php";
+if(!class_exists('FacebookApiException'))
+    require_once "base_facebook.php";
 
 /**
  * Extends the BaseFacebook class with the intent of using
  * PHP sessions to store user ids and access tokens.
  */
-class Facebook extends BaseFacebook
+class Sigami_Facebook extends BaseFacebook
 {
   const FBSS_COOKIE_NAME = 'fbss';
 
