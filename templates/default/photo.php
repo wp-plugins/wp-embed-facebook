@@ -6,7 +6,6 @@
  $width = $width;
  $height = $width * $prop;  
 ?>
-
 <div class="wpemfb-container" style="max-width: <?php echo $width ?>px">
 	<div class="wpemfb-row">
 		<div class="wpemfb-col-12">

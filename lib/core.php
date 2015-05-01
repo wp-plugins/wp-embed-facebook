@@ -497,7 +497,3 @@ class FaceInit {
 			self::$fbsdk = 'unactive';
 	}
 }
-
-?>
-
-

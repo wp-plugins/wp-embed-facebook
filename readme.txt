@@ -80,7 +80,7 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Changelog ==
 
-= 1.9 =
+= 1.9.1 =
 * Line breaks fix
 
 = 1.9 =

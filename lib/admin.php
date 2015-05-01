@@ -380,4 +380,3 @@ class EmbFbAdmin{
 		<?php	
 	}
 }
-?>

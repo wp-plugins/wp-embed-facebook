@@ -33,15 +33,6 @@ if( get_option('wpemfb_fb_root') === 'true' ){
 	add_filter('the_content', array('WP_Embed_FB','fb_root'),10,1);
 }
 	
-// wp-admin functions
-
-//Filters all in core
-
-//wpemfb_embed_type
-//wpemfb_api_string
-//wpemfb_2nd_api_string
-//wpemfb_category_template
-//wpemfb_template
 
 
 if(is_admin()){
@@ -50,37 +41,3 @@ if(is_admin()){
 	add_action( 'admin_enqueue_scripts', array('EmbFbAdmin','admin_enqueue_scripts'), 10,1);
 	add_action( 'admin_init', array('EmbFbAdmin','admin_init'));
 }
-
-
-
-
-
-//TODO: show like buttons on tiny mce
-//add_action( 'after_wp_tiny_mce', 'custom_after_wp_tiny_mce' );
-//add_action( 'after_wp_tiny_mce', 'custom_after_wp_tiny_mce' );
-//function custom_after_wp_tiny_mce() {
-//echo '
-//    <script type="text/javascript">
-//        jQuery.ajaxPrefilter(function(options, _, jqXHR) {
-//            jqXHR.complete(function() {
-//                window.fbAsyncInit = function() {
-//                    FB.init({
-//                      appId      : "' . get_option('wpemfb_app_id') . '",
-//                      xfbml      : true,
-//                      version    : "v2.3"
-//                    });
-//                };
-//                (function(d, s, id){
-//                     var js, fjs = d.getElementsByTagName(s)[0];
-//                     if (d.getElementById(id)) {return;}
-//                     js = d.createElement(s); js.id = id;
-//                     js.src = "//connect.facebook.net/' . get_locale() . '/sdk.js";
-//                     fjs.parentNode.insertBefore(js, fjs);
-//                }(document, "script", "facebook-jssdk"));
-//            });
-//        });
-//    </script>
-//';
-//}
-
-?>
