@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.2
-Stable tag: 1.9
+Stable tag: 1.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,12 +24,14 @@ Embed any public facebook video, page, post, profile, photo or event directly in
 * Facebook Profiles
 * Facebook Publications
 
+**[Demo](http://www.wpembedfb.com/demo/)**
+
 = Requirements =
 * Facebook App id and Secret
 
 = How to use it =
-Put on a single and separate line the Facebook URL.
-Or you can use a shortcode `[facebook=url width=200 raw=true]` 
+Copy the facebook url on a single line.
+Or you can use a shortcode `[facebook=url width=200 raw=true]`
 width and raw are optional, raw only works for videos and photos
 
 = Options =
@@ -43,7 +45,6 @@ width and raw are optional, raw only works for videos and photos
 * Change Theme
 * Add fb-root
 
-**[Demo](http://www.wpembedfb.com/demo/)**
 
 * The information that is shown on your post, is from facebook directly, no images or data are stored on your server.
 
@@ -78,6 +79,9 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9 =
+* Line breaks fix
 
 = 1.9 =
 * Facebook video embed code in case video type is not supported
@@ -172,10 +176,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9 =
-* Facebook video embed code in case video type is not supported
-* Fix: Compatibility with other facebook plugins thanks to ozzWANTED
-* New filters: 'wpemfb_api_string' and 'wpemfb_2nd_api_string'
-* Show embedded posts on admin
-* Fix undefined variable on js
-* Fix languages on event time
+= 1.9.1 =
+* Fixed empty lines at end of file.
