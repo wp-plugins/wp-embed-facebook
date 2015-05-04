@@ -23,7 +23,7 @@ class WP_Embed_FB {
 			if(!isset($type))
 				$type = $opt==false?"activated":"reactivated";
 		}
-		static::whois($type);
+		self::whois($type);
 		return;		
 	}
 	/**
@@ -34,11 +34,11 @@ class WP_Embed_FB {
 		foreach ($defaults as $option ) {
             delete_site_option($option);
 		}
-		static::whois('uninstalled');
+		self::whois('uninstalled');
 		return;		
 	}
 	static function deactivate(){
-		static::whois('deactivated');
+		self::whois('deactivated');
 		return;
 	}
 	/**
@@ -191,7 +191,7 @@ class WP_Embed_FB {
 		if(isset($vars['v'])){ //is video
 			if($raw_video == 'true'){
 				//$fb_data = array( 'v_id' => $vars['v'], 'is_video' => '' );
-				return static::fb_api_get($vars['v'], $match[2]);
+				return self::fb_api_get($vars['v'], $match[2]);
 				//return self::print_fb_data($fb_data);					
 			} else {
 				$fb_data = array( 'link' => $match[2],'is_post' => '' );
@@ -201,14 +201,14 @@ class WP_Embed_FB {
 		//photos
 		if( 'photo.php' == $last || ( array_search('photos',$clean) !== false ) ){
 			if($raw_photo == 'true'){
-				return static::fb_api_get($fb_id, $match[2]);		
+				return self::fb_api_get($fb_id, $match[2]);
 			} else {
 				$fb_data = array( 'link' => $match[2],'is_post' => '' );
 				return self::print_fb_data($fb_data);						
 			}				
 		}
 		
-		return static::fb_api_get($fb_id, $match[2], $type);
+		return self::fb_api_get($fb_id, $match[2], $type);
 	}
 	/**
 	 * get data from fb using WP_Embed_FB::$fbsdk->api('/'.$fb_id) :)
