@@ -3,14 +3,16 @@ Contributors: poxtron
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.2.1
-Stable tag: 1.9.3
+Tested up to: 4.2.2
+Stable tag: 1.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Embed a Facebook video, page, event, album, photo, profile or post to any Wordpress post or page.
 
 == Description ==
+
+**[Demo](http://www.wpembedfb.com/demo/)**
 
 Embed any public facebook video, page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will fetch data associated with that url and display it, if the data is not public, like “invite only” events or private profiles, will return a link.
 
@@ -79,6 +81,15 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9.4 =
+* Added option to embed raw videos with facebook code
+* Added poster on raw embed videos
+* Update to FB API v2.3
+* Update raw photo template
+
+= 1.9.3 =
+* Fixed error on older versions of PHP
 
 = 1.9.2 =
 * Line breaks fix
@@ -179,5 +190,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9.2 =
-* Fixed empty lines at end of file.
+= 1.9.4 =
+* Updated to FB API v2.3, display raw video posters & new option to use FB embed code for raw videos.

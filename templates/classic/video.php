@@ -13,7 +13,7 @@
         $type_array = explode('.',$file);
         $type = end($type_array);
         $clean_type = strtolower($type);
-        if( $clean_type == 'mp4' ) :?>
+        if( get_site_option('wpemfb_raw_video_fb') == 'false' && $clean_type == 'mp4' ) :?>
 
             <video controls>
                 <source src="<?php echo $fb_data['source'] ?>" type="video/<?php echo $clean_type ?>">

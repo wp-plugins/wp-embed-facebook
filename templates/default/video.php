@@ -2,6 +2,7 @@
 /*
  * You can create your own template by placing a copy of this file on yourtheme/plugins/wp-embed-fb/
  * to access all fb data print_r($fb_data)
+ *
  */
 ?>
 <div style="width: <?php echo $width ?>px">
@@ -13,16 +14,18 @@
     $type_array = explode('.',$file);
     $type = end($type_array);
     $clean_type = strtolower($type);
-    if( $clean_type == 'mp4' ) :?>
 
-        <video controls>
+    if( get_site_option('wpemfb_raw_video_fb') == 'false' && $clean_type == 'mp4' ) :?>
+        <?php $end = isset($fb_data['format']) ? end($fb_data['format']) : $fb_data;  ?>
+
+        <video controls poster="<?php echo $end['picture'] ?>" >
             <source src="<?php echo $fb_data['source'] ?>" type="video/<?php echo $clean_type ?>">
         </video>
 
     <?php else : ?>
 
         <div class="fb-video" data-allowfullscreen="true"
-             data-href="https://www.facebook.com/video/embed?video_id=<?php echo $fb_data['id'] ?>">
+             data-href="/<?php echo $fb_data['from']['id'] ?>/videos/<?php echo $fb_data['id'] ?>">
         </div>
 
     <?php endif; ?>

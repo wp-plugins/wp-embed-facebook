@@ -11,6 +11,7 @@ class WP_Embed_FB {
 	static $raw = '';
 	static $premium = '';
     static $num_posts = '';
+    static $poster = '';
 	/**
 	 * Save default values to data base
 	 */
@@ -65,7 +66,8 @@ class WP_Embed_FB {
 						'wpemfb_enq_lightbox'	=> 'true',
 						'wpemfb_enq_wpemfb'		=> 'true',
 						'wpemfb_enq_fbjs'		=> 'true',
-                        'wpemfb_ev_local_tz'    => 'true'
+                        'wpemfb_ev_local_tz'    => 'true',
+                        'wpemfb_raw_video_fb'   => 'false',
 						);
 	}
 	//("uninstalled","deactivated","activated","reactivated")
@@ -236,7 +238,7 @@ class WP_Embed_FB {
                  * @param string $type The detected type of embed
                  *
                  */
-                $fb_data = $wp_emb_fbsdk->api('/v2.0/'.apply_filters('wpemfb_api_string',$api_string,$fb_id,$type));
+                $fb_data = $wp_emb_fbsdk->api('/v2.3/'.apply_filters('wpemfb_api_string',$api_string,$fb_id,$type));
                 $num_posts = self::$num_posts !== '' && is_numeric(self::$num_posts) ? self::$num_posts : get_option("wpemfb_max_posts");
                 $api_string2 = '';
                 if(isset($fb_data['embed_html']))
@@ -257,7 +259,7 @@ class WP_Embed_FB {
                 $api_string2 = apply_filters('wpemfb_2nd_api_string',$api_string2,$fb_data,$type);
 
                 if(!empty($api_string2)){
-                    $extra_data = $wp_emb_fbsdk->api('/v2.0/'.$api_string2);
+                    $extra_data = $wp_emb_fbsdk->api('/v2.3/'.$api_string2);
                     $fb_data = array_merge($fb_data,$extra_data);
                 }
                 /**
@@ -338,6 +340,7 @@ class WP_Embed_FB {
             $width = self::$width;
             $height = self::$height;
         }
+        $poster = self::$poster;
         $prop = get_option('wpemfb_proportions');
         ob_start();
         //show embed post on admin

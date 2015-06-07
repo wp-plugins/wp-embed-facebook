@@ -6,8 +6,6 @@
  $width = $width - 20;
  $height = $width * $prop;  
 ?>
-<div class="wpemfb-container">
-	<a href="<?php echo $fb_data['link'] ?>" target="_blank" rel="nofollow">
-		<img src="<?php echo $fb_data['source'] ?>" width="<?php echo $width ?>" height="auto" />
-	</a>
-</div>
+<a href="<?php echo $fb_data['link'] ?>" target="_blank" rel="nofollow">
+    <img src="<?php echo $fb_data['source'] ?>" width="<?php echo $width ?>px" height="auto" style="max-width: <?php echo $width ?>px" />
+</a>
