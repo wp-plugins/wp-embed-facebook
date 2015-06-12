@@ -46,7 +46,7 @@
 	display: table-cell; 
 	vertical-align: middle;	
 }
-.wpemfb-thmb {
+img.wpemfb-thmb {
     border: 1px solid #808080;
     height: 60px !important;
     margin: 1px;
