@@ -84,7 +84,8 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 = 1.9.5 =
 * Fixed event templates
-* jQuery ui https in admin
+* Fixed album thumbnails
+* Fixed jQuery UI error when admin is in https
 
 = 1.9.4 =
 * Added option to embed raw videos with facebook code
@@ -195,4 +196,4 @@ The embedded post code comes directly from facebook so there is no easy way to c
 == Upgrade Notice ==
 
 = 1.9.5 =
-* Fixed event templates.
+* Fixed event templates & album thumbnails.
