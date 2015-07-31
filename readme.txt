@@ -20,7 +20,7 @@ Embed any public facebook video, page, post, profile, photo or event directly in
 * Facebook Videos
 * Facebook Albums
 * Facebook Events
-* Facebook Fotos
+* Facebook Photos
 * Facebook Fan pages
 * Facebook Community pages
 * Facebook Profiles
