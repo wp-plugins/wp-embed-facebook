@@ -3,8 +3,8 @@ Contributors: poxtron
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.2.2
-Stable tag: 1.9.6
+Tested up to: 4.2.3
+Stable tag: 1.9.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,14 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9.6.1 =
+* Fixed headers already sent notice.
+* Added Links to Facebook Apps and plugin settings
+* Removed deprecated is_date_only field on event template
+
+= 1.9.6 =
+* Fix Fatal Error on non object
 
 = 1.9.5 =
 * Fixed event templates
@@ -195,5 +203,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9.5 =
-* Fixed event templates & album thumbnails.
+= 1.9.6.1 =
+* Fixed headers already sent notice.
