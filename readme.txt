@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.3
-Stable tag: 1.9.6.3
+Stable tag: 1.9.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,10 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9.6.4 =
+* Fixed translation files
+* Fixed bug on event template
 
 = 1.9.6.3 =
 * Fixed MultiSite error
@@ -211,5 +215,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9.6.3 =
-* Fixed MultiSite error and new shortcode use [facebook=FB_Object_ID ]
+= 1.9.6.4 =
+* Fixed bug on event template & translation files
