@@ -3,18 +3,18 @@ Contributors: poxtron
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R8Q85GT3Q8Q26
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
-Tested up to: 4.2.3
-Stable tag: 1.9.6.1
+Tested up to: 4.3
+Stable tag: 1.9.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed a Facebook video, page, event, album, photo, profile or post to any Wordpress post or page.
+Embed a Facebook video, page, event, album, photo, profile or post to any WordPress post or page.
 
 == Description ==
 
-**[Demo](http://www.wpembedfb.com/demo/)**
+Embed any public facebook video, page, post, profile, photo or event directly into a WordPress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will fetch data associated with that url and display it. If the data is not public, like “invite only” events or private profiles it will return a link.
 
-Embed any public facebook video, page, post, profile, photo or event directly into a wordpress post, without having to write a single line of code. Simply put the facebook url on a separate line on the content of any post, and this plugin will fetch data associated with that url and display it, if the data is not public, like “invite only” events or private profiles, will return a link.
+**[Demo](http://www.wpembedfb.com/demo/)**
 
 = Supported Embeds =
 * Facebook Videos
@@ -34,7 +34,7 @@ Embed any public facebook video, page, post, profile, photo or event directly in
 = How to use it =
 Copy the facebook url on a single line.
 Or you can use a shortcode `[facebook=url width=200 raw=true]`
-width and raw are optional, raw only works for videos and photos
+width and raw are optional, raw only works for videos and photos.
 
 = Options =
 * Settings -> Embed Facebook.
@@ -67,7 +67,7 @@ It is possible that another plugin or your theme already has the Facebook SDK fo
 
 = Is there a way to embed an album with more than 100 photos ? =
 
-This is a facebook limitation, will try to work around it and update this feature on the premium plugin.
+This is a facebook limitation, will try to work around it.
 
 = How to change embedded post background =
 
@@ -81,6 +81,14 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9.6.3 =
+* Fixed MultiSite error
+* New Shortcode use [facebook=FB_Object_ID ] solution for fb permalinks
+* Fixed raw attribute on shortcode when url is video
+
+= 1.9.6.2 =
+* Local Release
 
 = 1.9.6.1 =
 * Fixed headers already sent notice.
@@ -203,5 +211,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9.6.1 =
-* Fixed headers already sent notice.
+= 1.9.6.3 =
+* Fixed MultiSite error and new shortcode use [facebook=FB_Object_ID ]
