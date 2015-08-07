@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.3
-Stable tag: 1.9.6.4
+Stable tag: 1.9.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,10 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9.6.5 =
+* Fixed more things on multisite
+* Fixed Page Template HTML
 
 = 1.9.6.4 =
 * Fixed translation files
@@ -167,7 +171,7 @@ The embedded post code comes directly from facebook so there is no easy way to c
 * Posts on Page Embeds
 * Album Photo Count
 * Fixes on Admin Page
-* Remove of unnecesary code
+* Remove of unnecessary code
 
 = 1.5.3 =
 * fixed Warning in admin
@@ -215,5 +219,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9.6.4 =
-* Fixed bug on event template & translation files
+= 1.9.6.5 =
+* Fixed more thing related to multisite and page template errors.
