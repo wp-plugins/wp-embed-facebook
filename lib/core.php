@@ -127,12 +127,9 @@ class WP_Embed_FB {
 	static function the_content($the_content){
 		preg_match_all("/<p>(http|https):\/\/www\.facebook\.com\/([^<\s]*)<\/p>/", $the_content, $matches, PREG_SET_ORDER);
 		if(!empty($matches) && is_array($matches)){
-			self::$fbsdk = FaceInit::$fbsdk;
-			if(self::$fbsdk !== 'unactive'){
 				foreach($matches as $match) {
 			    	$the_content = preg_replace("/<p>(http|https):\/\/www\.facebook\.com\/([^<\s]*)<\/p>/", self::fb_embed($match), $the_content, 1);
 			    }
-			}
 		}
 		return $the_content;		
 	}
@@ -141,76 +138,81 @@ class WP_Embed_FB {
 	 * @param array $match[2]=url without ' https://www.facebook.com/ '
      * @return string Embedded content
 	 */
-	static function fb_embed($match){ 
-		//extract fbid from url good for profiles, pages, comunity pages, raw photos, events
-		$vars = array();
-		$type = '';
-		parse_str(parse_url($match[2], PHP_URL_QUERY), $vars);	
-		
-		$url = explode('?', $match[2]);
-		$clean = explode('/', $url[0]);
-		$end = end($clean);	
-		if(empty($end)){
-			array_pop($clean);
-		} 
-		$last = end($clean);
-		$fb_id = $last;
-		//old embed ulr's
-		if( isset($vars['fbid']) ) 
-			$fb_id = $vars['fbid'];		
+	static function fb_embed($match){
+        self::$fbsdk = FaceInit::get_fbsdk();
+        if(self::$fbsdk !== 'unactive') {
+            //extract fbid from url good for profiles, pages, comunity pages, raw photos, events
+            $vars = array();
+            $type = '';
+            parse_str(parse_url($match[2], PHP_URL_QUERY), $vars);
 
-		//its an album
-		if( array_search('media',$clean) !== false || isset($vars['set']) || $last == 'album.php' ){
-			$type = 'album';
-			if ($last !== 'album.php') {
-				$ids = explode('.', $vars['set']);
-				$fb_id = $ids[1];				
-			}
-		}
-        /**
-         * Filter the embed type.
-         *
-         * @since 1.8
-         *
-         * @param string $type the embed type.
-         * @param array $clean url parts of the request.
-         */
-		$type = apply_filters('wpemfb_embed_type',$type,$clean);
-		//its a post
-		if( array_search('posts',$clean) !== false  ){
-			$fb_data = array( 'link' => $match[2],'is_post' => '' );
-			return self::print_fb_data($fb_data);					
-		}
+            $url = explode('?', $match[2]);
+            $clean = explode('/', $url[0]);
+            $end = end($clean);
+            if (empty($end)) {
+                array_pop($clean);
+            }
+            $last = end($clean);
+            $fb_id = $last;
+            //old embed ulr's
+            if (isset($vars['fbid']))
+                $fb_id = $vars['fbid'];
 
-		if(!empty(self::$raw)){
-			$raw_photo = self::$raw;
-			$raw_video = self::$raw;
-		} else {
-	 		$raw_photo = get_option('wpemfb_raw_photo') == 'true' ? 'true' : 'false';
-			$raw_video = get_option('wpemfb_raw_video') == 'true' ? 'true' : 'false';
-		}		
-		//is video
-		if(isset($vars['v'])){ //is video
-			if($raw_video == 'true'){
-				//$fb_data = array( 'v_id' => $vars['v'], 'is_video' => '' );
-				return self::fb_api_get($vars['v'], $match[2]);
-				//return self::print_fb_data($fb_data);					
-			} else {
-				$fb_data = array( 'link' => $match[2],'is_post' => '' );
-				return self::print_fb_data($fb_data);					
-			}
-		}
-		//photos
-		if( 'photo.php' == $last || ( array_search('photos',$clean) !== false ) ){
-			if($raw_photo == 'true'){
-				return self::fb_api_get($fb_id, $match[2]);
-			} else {
-				$fb_data = array( 'link' => $match[2],'is_post' => '' );
-				return self::print_fb_data($fb_data);						
-			}				
-		}
-		
-		return self::fb_api_get($fb_id, $match[2], $type);
+            //its an album
+            if (array_search('media', $clean) !== false || isset($vars['set']) || $last == 'album.php') {
+                $type = 'album';
+                if ($last !== 'album.php') {
+                    $ids = explode('.', $vars['set']);
+                    $fb_id = $ids[1];
+                }
+            }
+            /**
+             * Filter the embed type.
+             *
+             * @since 1.8
+             *
+             * @param string $type the embed type.
+             * @param array $clean url parts of the request.
+             */
+            $type = apply_filters('wpemfb_embed_type', $type, $clean);
+            //its a post
+            if (array_search('posts', $clean) !== false) {
+                $fb_data = array('link' => $match[2], 'is_post' => '');
+                return self::print_fb_data($fb_data);
+            }
+
+            if (!empty(self::$raw)) {
+                $raw_photo = self::$raw;
+                $raw_video = self::$raw;
+            } else {
+                $raw_photo = get_option('wpemfb_raw_photo') == 'true' ? 'true' : 'false';
+                $raw_video = get_option('wpemfb_raw_video') == 'true' ? 'true' : 'false';
+            }
+            //is video
+            if (isset($vars['v'])) { //is video
+                if ($raw_video == 'true') {
+                    //$fb_data = array( 'v_id' => $vars['v'], 'is_video' => '' );
+                    return self::fb_api_get($vars['v'], $match[2]);
+                    //return self::print_fb_data($fb_data);
+                } else {
+                    $fb_data = array('link' => $match[2], 'is_post' => '');
+                    return self::print_fb_data($fb_data);
+                }
+            }
+            //photos
+            if ('photo.php' == $last || (array_search('photos', $clean) !== false)) {
+                if ($raw_photo == 'true') {
+                    return self::fb_api_get($fb_id, $match[2]);
+                } else {
+                    $fb_data = array('link' => $match[2], 'is_post' => '');
+                    return self::print_fb_data($fb_data);
+                }
+            }
+            return self::fb_api_get($fb_id, $match[2], $type);
+        } else {
+            return '<p><a href="https://www.facebook.com/'.$match[2].'" target="_blank" rel="nofollow">https://www.facebook.com/'.$match[2].'</a>';
+        }
+
 	}
 	/**
 	 * get data from fb using WP_Embed_FB::$fbsdk->api('/'.$fb_id) :)
@@ -464,8 +466,6 @@ class WP_Embed_FB {
 		return '';
 	}
 	static function embed_register_handler($match){
-		if(!is_object(self::$fbsdk))
-			self::$fbsdk = FaceInit::$fbsdk;
 		return self::fb_embed($match);
 	}	
 	static function fb_root($ct){
@@ -487,7 +487,7 @@ class WP_Embed_FB {
  * https://developers.facebook.com/docs/reference/php/ 
  */	
 class FaceInit {
-	static $fbsdk;
+	static $fbsdk = null;
 	static function init(){
 		require('fb/facebook.php');
 		$config = array();
@@ -499,4 +499,9 @@ class FaceInit {
 		else
 			self::$fbsdk = 'unactive';
 	}
+    static function get_fbsdk(){
+        if(self::$fbsdk == null)
+            self::init();
+        return self::$fbsdk;
+    }
 }
