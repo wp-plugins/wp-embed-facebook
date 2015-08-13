@@ -5,19 +5,8 @@
  */
  $show_posts = get_option("wpemfb_show_posts") == "true" ? true : false;
 ?>
-<div class="wpemfb-container" 
-						style="	width:<?php echo $width ?>px;
-							    margin-left: auto;
-							    margin-right: auto;						
-						">
-	<div class="wpemfb-cover" 
-					style="	height:<?php echo $height ?>px; 
-							width:<?php echo $width?>px; 
-							background-image: url(<?php echo $fb_data['cover']['source'] ?>); 
-							background-position: 0% <?php echo $fb_data['cover']['offset_y'] ?>%;
-					 		">
-		
-	</div>
+<div class="wpemfb-container" style="width:<?php echo $width ?>px; margin-left: auto; margin-right: auto; ">
+	<div class="wpemfb-cover" style="height:<?php echo $height ?>px; width:<?php echo $width?>px; background-image: url(<?php echo $fb_data['cover']['source'] ?>); background-position: 0 <?php echo $fb_data['cover']['offset_y'] ?>%; "></div>
 	<div class="wpemfb-info">
 		<div class="wpemfb-pic">
 			<a href="<?php echo $fb_data['link'] ?>" target="_blank" rel="nofollow">

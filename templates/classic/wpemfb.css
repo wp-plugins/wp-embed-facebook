@@ -38,7 +38,7 @@
 .wpemfb-pic{
 	display: table-cell; 
 	vertical-align: middle; 
-	margin: 0px; 
+	margin: 0;
 	padding: 5px; 
 	width: 10%;
 }
@@ -46,7 +46,7 @@
 	display: table-cell; 
 	vertical-align: middle;	
 }
-.wpemfb-thmb {
+img.wpemfb-thmb {
     border: 1px solid #808080;
     height: 60px !important;
     margin: 1px;
@@ -58,10 +58,10 @@
 }
 
 .wpemfb-posts-container{
-	margin:0px auto; 
+	margin:0 auto;
 	width:100% !important; 
 	border-top: 1px solid whitesmoke; 
-	padding: 3px 0px; 
+	padding: 3px 0;
 	display: table; 
 	cursor: pointer;	
 }

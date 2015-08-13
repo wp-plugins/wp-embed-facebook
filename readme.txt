@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Facebook, facebook, Social Plugins, embed facebook, facebook video, facebook posts, facebook publication, facebook publications, facebook event, facebook events, facebook pages, facebook page, facebook profiles, facebook album, facebook albums, facebook photos, facebook photo, social,
 Requires at least: 3.8.1
 Tested up to: 4.3
-Stable tag: 1.9.6.6
+Stable tag: 1.9.6.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ The embedded post code comes directly from facebook so there is no easy way to c
 4. Event
 
 == Changelog ==
+
+= 1.9.6.7 =
+* Fixed delete of options on uninstall
 
 = 1.9.6.6 =
 * Fixed Embed Video Error
@@ -223,5 +226,5 @@ The embedded post code comes directly from facebook so there is no easy way to c
 
 == Upgrade Notice ==
 
-= 1.9.6.6 =
-* Fixed video embed error & like button html
+= 1.9.6.7 =
+* Fixed delete of options on uninstall

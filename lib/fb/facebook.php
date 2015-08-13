@@ -45,10 +45,16 @@ class Sigami_Facebook extends BaseFacebook
    * @see BaseFacebook::__construct in facebook.php
    */
   public function __construct($config) {
-    if (!session_id()) {
-      session_start();
-    }
-    parent::__construct($config);
+      if (version_compare(phpversion(), '5.4.0', '<')) {
+          if(session_id() == '') {
+              session_start();
+          }
+      } else {
+          if (session_status() == PHP_SESSION_NONE) {
+              session_start();
+          }
+      }
+      parent::__construct($config);
     if (!empty($config['sharedSession'])) {
       $this->initSharedSession();
     }

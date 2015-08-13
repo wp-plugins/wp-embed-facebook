@@ -9,11 +9,7 @@
 ?>
 <div class="wpemfb-container" style="max-width: <?php echo $width ?>px" >
 	<div class="wpemfb-cover"
-		style= "
-				height:<?php echo $height ?>px;
-				background-image: url(<?php echo $fb_data['cover']['source'] ?>); 
-				background-position: 0% <?php echo $fb_data['cover']['offset_y'] ?>%;
-		 		" onclick="window.open('<?php echo $fb_data['link'] ?>', '_blank')" >
+		style= "height:<?php echo $height ?>px; background-image: url(<?php echo $fb_data['cover']['source'] ?>); background-position: 0 <?php echo $fb_data['cover']['offset_y'] ?>%;" onclick="window.open('<?php echo $fb_data['link'] ?>', '_blank')" >
 	</div>				
 	<div class="wpemfb-row wpemfb-pad-top">
 			<div class="wpemfb-col-2 wpemfb-text-center">

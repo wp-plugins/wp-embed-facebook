@@ -9,17 +9,17 @@ class EmbFbAdmin
             global $wp_scripts;
             wp_enqueue_script('wpemfb-admin', WPEMFBURL . 'lib/js/admin.js', array('jquery-ui-accordion'));
             $queryui = $wp_scripts->query('jquery-ui-core');
-            $url = "http://ajax.googleapis.com/ajax/libs/jqueryui/" . $queryui->ver . "/themes/smoothness/jquery-ui.css";
+            $url = "https://ajax.googleapis.com/ajax/libs/jqueryui/" . $queryui->ver . "/themes/smoothness/jquery-ui.css";
             wp_enqueue_style('jquery-ui-start', $url, false, null);
         }
-        $translation_array = array('local' => get_locale(), 'fb_id' => get_site_option('wpemfb_app_id'), 'fb_root' => get_site_option('wpemfb_fb_root'));
+        $translation_array = array('local' => get_locale(), 'fb_id' => get_option('wpemfb_app_id'), 'fb_root' => get_option('wpemfb_fb_root'));
         wp_localize_script('wpemfb', 'WEF', $translation_array);
         wp_enqueue_script('wpemfb');
     }
 
     static function admin_init()
     {
-        $theme = get_site_option('wpemfb_theme');
+        $theme = get_option('wpemfb_theme');
         add_editor_style(WPEMFBURL . 'templates/' . $theme . '/wpemfb.css');
     }
 
@@ -36,13 +36,13 @@ class EmbFbAdmin
     {
         if ($type == 'direct') {
             if (isset($_POST[$option])) {
-                update_site_option($option, $_POST[$option]);
+                update_option($option, $_POST[$option]);
             }
         } else {
             if (isset($_POST[$option])) {
-                update_site_option($option, 'true');
+                update_option($option, 'true');
             } else {
-                update_site_option($option, 'false');
+                update_option($option, 'false');
             }
         }
     }
@@ -71,14 +71,13 @@ class EmbFbAdmin
                 'wpemfb_enq_fbjs'       => 'true/false',
                 'wpemfb_ev_local_tz'    => 'true/false',
                 'wpemfb_raw_video_fb'   => 'true/false',
-                'wpemfb_raw_video_fb_sc'=> 'true/false',
             );
             foreach ($options as $option => $type) {
                 self::save_option($option, $type);
             }
             if (isset($_POST['wpemfb_max_width']) && is_int($_POST['wpemfb_max_width'])) {
-                $prop = get_site_option('wpemfb_proportions') * $_POST['wpemfb_max_width'];
-                update_site_option('wpemfb_height', $prop);
+                $prop = get_option('wpemfb_proportions') * $_POST['wpemfb_max_width'];
+                update_option('wpemfb_height', $prop);
             }
         }
         /**
@@ -100,7 +99,7 @@ class EmbFbAdmin
                     <th><?php echo $label ?></th>
                     <td>
                         <input type="checkbox"
-                               name="<?php echo $name ?>" <?php echo (get_site_option($name) === 'true') ? 'checked' : '' ?> />
+                               name="<?php echo $name ?>" <?php echo (get_option($name) === 'true') ? 'checked' : '' ?> />
                     </td>
                 </tr>
                 <?php
@@ -114,15 +113,16 @@ class EmbFbAdmin
                     <td>
                         <input type="<?php echo $type ?>"
                                name="<?php echo $name ?>" <?php echo isset($args['required']) ? 'required' : '' ?>
-                               value="<?php echo get_site_option($name) ?>" size="38"/>
+                               value="<?php echo get_option($name) ?>" size="38"/>
                     </td>
                 </tr>
                 <?php
                 ob_end_flush();
+                break;
         }
     }
-    static function section($start=false, $title=''){
-        if($start) :
+    static function section($title=''){
+        if(!empty($title)) :
             ?>
             <h5><?php echo $title ?></h5>
             <div>
@@ -143,8 +143,8 @@ class EmbFbAdmin
             self::savedata();
 
         }
-        $sel1 = (get_site_option('wpemfb_theme') === 'default') ? 'selected' : '';
-        $sel2 = (get_site_option('wpemfb_theme') === 'classic') ? 'selected' : '';
+        $sel1 = (get_option('wpemfb_theme') === 'default') ? 'selected' : '';
+        $sel2 = (get_option('wpemfb_theme') === 'classic') ? 'selected' : '';
 
         ?>
         <style>
@@ -184,12 +184,12 @@ class EmbFbAdmin
                                 <?php wp_nonce_field('wp-embed-facebook', 'save-data'); ?>
                                 <div id="accordion">
                                     <?php
-                                        self::section(true, __('Facebook application data', 'wp-embed-facebook'));
+                                        self::section(__('Facebook application data', 'wp-embed-facebook'));
                                         self::field('text', 'wpemfb_app_id', __('App ID', 'wp-embed-facebook'), array('required' => 'true'));
                                         self::field('text', 'wpemfb_app_secret', __('App Secret', 'wp-embed-facebook'), array('required' => 'true'));
                                         self::section();
                                     ?>
-                                    <?php self::section(true, __("General Options", 'wp-embed-facebook')); ?>
+                                    <?php self::section(__("General Options", 'wp-embed-facebook')); ?>
                                     <tr valign="middle">
                                         <th><?php _e("Template to use", 'wp-embed-facebook') ?></th>
                                         <td>
@@ -211,24 +211,23 @@ class EmbFbAdmin
                                         self::field('number', 'wpemfb_max_photos', __('Number of Photos <br>on Embedded Albums', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_show_follow', __('Show follow button <br>on Embedded Profiles', 'wp-embed-facebook'));
                                         self::section();
-                                        self::section(true, __('Embedded Fan Pages', 'wp-embed-facebook'));
+                                        self::section(__('Embedded Fan Pages', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_show_like', __('Show like button', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_show_posts', __('Show latest posts', 'wp-embed-facebook'));
                                         self::field('number', 'wpemfb_max_posts', __('Number of posts', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_ev_local_tz', __('Show events on local time', 'wp-embed-facebook'));
                                         self::section();
-                                        self::section(true, __('Raw Embedded Options', 'wp-embed-facebook'));
+                                        self::section(__('Raw Embedded Options', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_raw_video', __('Embed Videos Raw', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_raw_photo', __('Embed Photos Raw', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_raw_video_fb', __('Use Facebook embed code on raw videos', 'wp-embed-facebook'));
-                                        self::field('checkbox', 'wpemfb_raw_video_fb_sc', __('Use Facebook embed code on raw video shortcode', 'wp-embed-facebook'));
                                         self::section();
                                         /**
                                          * Add more options to the plugin page save them with 'wpemfb_admin_save_data' action
                                          * @since 1.8
                                          */
                                         do_action('wpemfb_options');
-                                        self::section(true, __('Advanced Options', 'wp-embed-facebook'));
+                                        self::section(__('Advanced Options', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_enqueue_style', __('Enqueue Styles', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_fb_root', __('Add fb-root on top of content', 'wp-embed-facebook'));
                                         self::field('checkbox', 'wpemfb_enq_lightbox', __('Enqueue Lightbox script', 'wp-embed-facebook'));

@@ -5,9 +5,9 @@
  */
 ?>
 <?php
-$start_time_format = !empty($fb_data['is_date_only']) ? 'l, j F Y' : 'l, j F Y g:s a';
+$start_time_format = 'l, j F Y g:s a';
 $start_time = strtotime($fb_data['start_time']);
-if (get_site_option('wpemfb_ev_local_tz', 'true') == 'true') {
+if (get_option('wpemfb_ev_local_tz', 'true') == 'true') {
     $start_time = $start_time + get_option('gmt_offset') * 3600; //shows event date on local time
 }
 ?>
@@ -27,11 +27,12 @@ if (get_site_option('wpemfb_ev_local_tz', 'true') == 'true') {
             </h4>
             <?php echo date_i18n($start_time_format, $start_time) ?><br>
             <?php
-            if(isset($fb_data['venue']['id'])){
-                echo '<a href="http://www.facebook.com/'.$fb_data['venue']['id'].'" target="_blank">'.$fb_data['location'].'</a>';
+            if(isset($fb_data['place']['id'])){
+                echo '<a href="http://www.facebook.com/'.$fb_data['place']['id'].'" target="_blank">'.$fb_data['location'].'</a>';
             } else {
-                echo $fb_data['location'];
-            } ?>
+                echo isset($fb_data['place']['name']) ? __('@ ', 'wp-embed-facebook') . $fb_data['place']['name'] : '';
+            }
+            ?>
             <br>
             <?php echo __('Creator: ', 'wp-embed-facebook').'<a href="http://www.facebook.com/'.$fb_data['owner']['id'].'" target="_blank">'.$fb_data['owner']['name'].'</a>' ?>
         </div>
