@@ -31,8 +31,6 @@ add_shortcode('facebook', array('WP_Embed_FB','shortcode') );
 if( get_option('wpemfb_fb_root') === 'true' ){
 	add_filter('the_content', array('WP_Embed_FB','fb_root'),10,1);
 }
-	
-
 
 if(is_admin()){
 	require_once WPEMFBDIR.'lib/admin.php';
